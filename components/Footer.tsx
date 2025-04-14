@@ -2,22 +2,32 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-gray-800 text-white p-8">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+    <footer className="w-full py-10 bg-gray-100">
+      <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
         <div>
-          <h6 className="text-lg font-semibold mb-4">Aestethic Dental Kozina</h6>
-          <ul className="space-y-2">
+          <h6 className="text-lg font-semibold mb-4">
+            Aestethic Dental Kozina
+          </h6>
+          <ul className="space-y-1 text-sm text-gray-700">
             <li>
-              <Link href="/" className="hover:underline">Početna</Link>
+              <Link href="/" className="hover:underline">
+                Početna
+              </Link>
             </li>
             <li>
-              <Link href="/oNama" className="hover:underline">O nama</Link>
+              <Link href="/oNama" className="hover:underline">
+                O nama
+              </Link>
             </li>
             <li>
-              <Link href="/usluge" className="hover:underline">Usluge</Link>
+              <Link href="/usluge" className="hover:underline">
+                Usluge
+              </Link>
             </li>
             <li>
-              <Link href="/kontakt" className="hover:underline">Kontakt</Link>
+              <Link href="/kontakt" className="hover:underline">
+                Kontakt
+              </Link>
             </li>
           </ul>
         </div>
@@ -39,8 +49,9 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="text-center text-sm text-gray-400 mt-8">
-        © {new Date().getFullYear()} Aestethic Dental Kozina. Sva prava pridržana.
+      <div className="text-center text-sm text-gray-500 mt-10 px-4">
+        © {new Date().getFullYear()} Aestethic Dental Kozina. Sva prava
+        pridržana.
       </div>
     </footer>
   );
