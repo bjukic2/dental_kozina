@@ -2,8 +2,12 @@ import telephone from "@components/icons/telephone.png";
 import location from "@components/icons/location.png";
 import mail from "@components/icons/mail.png";
 import Image from "next/image";
+import KontaktForma from "@/components/KontaktForma";
 
 const adresa = process.env.ADRESA;
+const adresa1 = process.env.ADRESA1;
+const mobitel = process.env.MOBITEL;
+const email = process.env.EMAIL;
 
 export default function Kontakt() {
   return (
@@ -28,84 +32,27 @@ export default function Kontakt() {
 
             <div className="flex items-center gap-2 text-gray-700">
               <Image src={location} alt="Lokacija" width={20} height={20} />
-              <span>Example 12, Example</span>
+              <span>{adresa1}</span>
             </div>
 
             <a
-              href="tel:1111111111"
+              href={`tel:${mobitel}`}
               className="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition"
             >
               <Image src={telephone} alt="Telefon" width={20} height={20} />
-              <span>1111111111</span>
+              <span>{mobitel}</span>
             </a>
 
             <a
-              href="mailto:example@example.com"
+              href={`mailto:${email}`}
               className="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition"
             >
               <Image src={mail} alt="Email" width={20} height={20} />
-              <span>example@example.com</span>
+              <span>{email}</span>
             </a>
           </div>
         </div>
-
-        <form className="space-y-4 bg-gray-50 p-6 rounded-lg shadow-md">
-          <h6 className="text-lg font-semibold text-gray-700">
-            Pošaljite poruku
-          </h6>
-
-          <div className="flex flex-col">
-            <label htmlFor="ime" className="text-sm font-medium text-gray-600">
-              Ime i prezime
-            </label>
-            <input
-              type="text"
-              id="ime"
-              name="ime"
-              className="border p-2 rounded mt-1"
-              required
-            />
-          </div>
-
-          <div className="flex flex-col">
-            <label
-              htmlFor="email"
-              className="text-sm font-medium text-gray-600"
-            >
-              Email adresa
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              className="border p-2 rounded mt-1"
-              required
-            />
-          </div>
-
-          <div className="flex flex-col">
-            <label
-              htmlFor="poruka"
-              className="text-sm font-medium text-gray-600"
-            >
-              Poruka
-            </label>
-            <textarea
-              id="poruka"
-              name="poruka"
-              rows={4}
-              className="border p-2 rounded mt-1"
-              required
-            ></textarea>
-          </div>
-
-          <button
-            type="submit"
-            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
-          >
-            Pošalji
-          </button>
-        </form>
+        <KontaktForma />
       </div>
 
       <div className="w-full h-72">
