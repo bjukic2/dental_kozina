@@ -1,14 +1,12 @@
 import { NextResponse } from "next/server";
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "@/utils/prisma";
 import nodemailer from "nodemailer";
-
-const prismaClient= new PrismaClient();
 
 export async function POST(req: Request) {
     const { ime, email, poruka } = await req.json();
 
     try {
-        await prismaClient.poruka.create({
+        await prisma.poruka.create({
             data: { ime, email, poruka },
         });
     } catch (err) {
@@ -20,7 +18,7 @@ export async function POST(req: Request) {
         service: "gmail",
         auth: {
             user: process.env.SMTP_USER,
-            pass: process.env.SMTP_USER,
+            pass: process.env.SMTP_PASS,
         },
     });
 
