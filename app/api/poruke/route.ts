@@ -1,22 +1,14 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/utils/prisma";
+import { Prisma } from "@prisma/client";
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
-  const od = searchParams.get("od");
-  const doDatuma = searchParams.get("do");
   const page = parseInt(searchParams.get("page") || "1", 10);
   const pageSize = 5;
   const query = searchParams.get("q");
 
-  const filters: any = {};
-
-  if (od || doDatuma) {
-    filters.createdAt = {};
-    if (od) filters.createdAt.gte = new Date(od);
-    if (doDatuma) filters.createdAt.lte = new Date(doDatuma);
-  }
-
+  const filters: Prisma.porukaWhereInput = {};
   if (query) {
     filters.OR = [
       { ime: { contains: query, mode: "insensitive" } },
