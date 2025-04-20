@@ -7,9 +7,11 @@ export async function DELETE(req: Request, { params }: { params: { id: string } 
     if (isNaN(id)) {
       return NextResponse.json({ success: false, message: "Invalid ID" }, { status: 400 });
     }
+
     await prisma.poruka.delete({
       where: { id },
     });
+
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Greška u brisanju poruke:", error);
