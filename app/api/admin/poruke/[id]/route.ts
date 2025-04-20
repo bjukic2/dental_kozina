@@ -3,10 +3,10 @@ import { NextResponse, NextRequest } from "next/server";
 
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Record<string, string> }
 ) {
   try {
-    const id = parseInt(params.id);
+    const id = parseInt(context.params.id);
 
     if (isNaN(id)) {
       return NextResponse.json({ success: false, message: "Invalid ID" }, { status: 400 });
