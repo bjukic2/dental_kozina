@@ -1,6 +1,6 @@
-"use client";
+"use client"
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
@@ -23,7 +23,6 @@ export default function AdminPoruke() {
       router.push("/");
     }
   }, [session, status, router]);
-  
 
   const [poruke, setPoruke] = useState<Poruka[]>([]);
   const [loading, setLoading] = useState(true);
@@ -33,7 +32,8 @@ export default function AdminPoruke() {
   const [od, setOd] = useState("");
   const [doDatuma, setDoDatuma] = useState("");
 
-  const fetchPoruke = async () => {
+  // Memoriramo fetchPoruke pomoću useCallback
+  const fetchPoruke = useCallback(async () => {
     setLoading(true);
     const params = new URLSearchParams({ page: String(page) });
     if (q) params.append("q", q);
@@ -45,21 +45,20 @@ export default function AdminPoruke() {
     setPoruke(data.poruke);
     setTotalPages(data.totalPages);
     setLoading(false);
-  };
+  }, [page, q, od, doDatuma]); 
 
   useEffect(() => {
     fetchPoruke();
-  }, [page]);
-
+  }, [page, q, od, doDatuma, fetchPoruke]); 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setPage(1);
+    setPage(1); 
     fetchPoruke();
   };
 
   const obrisiPoruku = async (id: number) => {
     await fetch(`/api/admin/poruke/${id}`, { method: "DELETE" });
-    fetchPoruke();
+    fetchPoruke(); 
   };
 
   return (
