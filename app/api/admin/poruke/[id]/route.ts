@@ -1,10 +1,12 @@
 import { prisma } from "@/utils/prisma";
 import { NextResponse, NextRequest } from "next/server";
 
-export async function DELETE(req: NextRequest) {
+export async function DELETE(
+  req: NextRequest,
+  { params }: { params: { id: string } }
+) {
   try {
-    const idParam = req.nextUrl.pathname.split("/").pop();
-    const id = parseInt(idParam || "");
+    const id = parseInt(params.id);
 
     if (isNaN(id)) {
       return NextResponse.json({ success: false, message: "Invalid ID" }, { status: 400 });
