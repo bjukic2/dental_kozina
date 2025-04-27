@@ -1,24 +1,37 @@
 import { prisma } from "@/utils/prisma";
-import { NextResponse, NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+
+interface ApiResponse {
+  success: boolean;
+  message?: string;
+}
 
 export async function DELETE(
   req: NextRequest,
-  context: { params: Record<string, string> }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
+  const parsedId = Number(id);
+
+  if (!parsedId || isNaN(parsedId)) {
+    return NextResponse.json<ApiResponse>(
+      { success: false, message: "Invalid ID" },
+      { status: 400 }
+    );
+  }
+
   try {
-    const id = parseInt(context.params.id);
-
-    if (isNaN(id)) {
-      return NextResponse.json({ success: false, message: "Invalid ID" }, { status: 400 });
-    }
-
     await prisma.poruka.delete({
-      where: { id },
+      where: { id: parsedId },
     });
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json<ApiResponse>({ success: true });
   } catch (error) {
-    console.error("Greška u brisanju poruke:", error);
-    return NextResponse.json({ success: false, message: "Greška u brisanju poruke" }, { status: 500 });
+    console.error("Error deleting message:", error);
+
+    return NextResponse.json<ApiResponse>(
+      { success: false, message: "Internal server error" },
+      { status: 500 }
+    );
   }
 }
