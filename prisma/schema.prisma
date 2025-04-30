@@ -20,3 +20,23 @@ model poruka {
   poruka    String
   createdAt DateTime  @default(now())
 }
+
+model kategorija {
+  id        Int       @id @default(autoincrement())
+  naziv     String
+  slug      String    @unique
+  opis      String?
+  slika     String?
+  usluge    usluga[]
+}
+
+model usluga  {
+  id            Int       @id @default(autoincrement())
+  naziv         String
+  slug          String    @unique
+  opis          String?
+  slika         String?
+  cijena        Decimal?
+  kategorijaId  Int
+  kategorija    kategorija @relation(fields: [kategorijaId], references: [id])
+}
