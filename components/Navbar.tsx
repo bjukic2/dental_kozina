@@ -82,9 +82,11 @@ export default function Navbar() {
           </ul>
 
           <div className="hidden md:block">
-            <button className="border border-white text-white bg-transparent px-4 py-2 rounded hover:bg-white hover:text-gray-800 transition">
-              PRVI PREGLED
-            </button>
+            <Link href="/kontakt">
+              <button className="border border-white text-white bg-transparent px-4 py-2 rounded hover:bg-white hover:text-gray-800 transition cursor-pointer">
+                PRVI PREGLED
+              </button>
+            </Link>
           </div>
         </div>
       </motion.nav>
