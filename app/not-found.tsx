@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function NotFound() {
   return (
     <div className="min-h-screen flex items-center justify-center text-center p-6">
@@ -8,9 +10,9 @@ export default function NotFound() {
         <p className="text-lg mb-6">
           Stranica koju tražite ne postoji ili je premještena.
         </p>
-        <a href="/" className="text-blue-600 underline">
+        <Link href="/" className="text-blue-600 underline">
           Natrag na početnu
-        </a>
+        </Link>
       </div>
     </div>
   );
