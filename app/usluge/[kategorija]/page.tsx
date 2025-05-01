@@ -3,17 +3,16 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 
-export const revalidate = 60;
-
-type Props = {
-  params: {
-    kategorija: string;
-  };
+type ResolvedParams = {
+  kategorija: string;
 };
 
-export default async function KategorijaPage(props: Props) {
-  const resolvedParams = await Promise.resolve(props.params);
-  const { kategorija } = resolvedParams;
+type Props = {
+  params: Promise<ResolvedParams>;
+};
+
+export default async function KategorijaPage({ params }: Props) {
+  const { kategorija } = await params;
 
   const kat = await prisma.kategorija.findUnique({
     where: { slug: kategorija },
