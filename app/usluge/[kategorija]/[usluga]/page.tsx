@@ -1,29 +1,68 @@
-import { db } from "@/utils/db";
+import { prisma } from "@/utils/prisma";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 
-export default async function UslugaPage({
-  params,
-}: {
-  params: { kategorija: string; usluga: string };
-}) {
-  const usluga = await db.usluga.findUnique({
-    where: { slug: params.usluga },
+type Props = {
+  params: {
+    kategorija: string;
+    usluga: string;
+  };
+};
+
+export default async function UslugaPage({ params }: Props) {
+  const resolvedParams = await Promise.resolve(params);
+  const { kategorija, usluga } = resolvedParams;
+
+  const service = await prisma.usluga.findFirst({
+    where: {
+      slug: usluga,
+      kategorija: { slug: kategorija },
+    },
     include: { kategorija: true },
   });
 
-  if (!usluga || usluga.kategorija.slug !== params.kategorija) {
-    return notFound();
-  }
+  if (!service) return notFound();
 
   return (
-    <div>
-      <h1>{usluga.naziv}</h1>
-      <img
-        src={usluga.slika || "/images/kategorije/implantologija.jpg"}
-        alt={usluga.naziv}
-      />
-      <p>{usluga.opis}</p>
-      {usluga.cijena && <p>Cijena: {usluga.cijena.toFixed(2)} €</p>}
+    <div className="max-w-2xl">
+      <h1 className="text-3xl font-bold">{service.naziv}</h1>
+      <p className="text-gray-500 mb-2">
+        Kategorija: {service.kategorija.naziv}
+      </p>
+      {service.slika ? (
+        <Image
+          src={service.slika}
+          alt={service.naziv}
+          width={600}
+          height={400}
+        />
+      ) : (
+        <div className="w-[600px] h-[400px] bg-gray-200 flex items-center justify-center text-gray-600">
+          Nema slike
+        </div>
+      )}
+
+      <p className="mt-4">{service.opis}</p>
+      <p className="mt-2 font-semibold">
+        Cijena:{" "}
+        {service.cijena !== null ? `${service.cijena.toFixed(2)} €` : "/"}
+      </p>
     </div>
   );
+}
+
+export async function generateStaticParams() {
+  const usluge = await prisma.usluga.findMany({
+    select: {
+      slug: true,
+      kategorija: {
+        select: { slug: true },
+      },
+    },
+  });
+
+  return usluge.map((usluga) => ({
+    kategorija: usluga.kategorija.slug,
+    usluga: usluga.slug,
+  }));
 }
