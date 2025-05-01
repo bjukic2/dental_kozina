@@ -11,7 +11,7 @@ const email = process.env.EMAIL;
 
 export default function Kontakt() {
   return (
-    <div className="max-w-6xl mx-auto p-6 space-y-10">
+    <div className="max-w-6xl mx-auto py-20 px-6 space-y-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         <div className="space-y-6">
           <div>
