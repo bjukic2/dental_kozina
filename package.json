@@ -12,6 +12,7 @@
     "@neondatabase/serverless": "^1.0.0",
     "@prisma/adapter-neon": "^6.7.0",
     "@prisma/client": "^6.6.0",
+    "cloudinary": "^2.6.1",
     "dotenv": "^16.5.0",
     "framer-motion": "^12.7.4",
     "jsonwebtoken": "^9.0.2",
@@ -21,6 +22,7 @@
     "nextjs": "^0.0.3",
     "nodemailer": "^6.10.1",
     "react": "^19.0.0",
+    "react-before-after-slider-component": "^1.1.8",
     "react-dom": "^19.0.0",
     "ws": "^8.18.1"
   },

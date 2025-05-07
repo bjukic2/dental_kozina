@@ -41,3 +41,12 @@ model usluga  {
   kategorijaId  Int
   kategorija    kategorija @relation(fields: [kategorijaId], references: [id])
 }
+
+model usporedba {
+  id          Int         @id @default(autoincrement())
+  naziv       String  
+  opis        String?
+  prijeUrl    String
+  poslijeUrl  String
+  createdAt   DateTime    @default(now())
+}
