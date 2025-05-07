@@ -1,8 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function UsporedbeAdmin() {
+  const { data: session, status } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      router.push(
+        `/prijava?callbackUrl=${encodeURIComponent("/admin/usporedbe")}`
+      );
+    } else if (status === "authenticated" && session?.user.role !== "admin") {
+      router.push("/");
+    }
+  }, [session, status, router]);
+
   const [naziv, setNaziv] = useState("");
   const [opis, setOpis] = useState("");
   const [beforeImage, setBeforeImage] = useState<File | null>(null);
