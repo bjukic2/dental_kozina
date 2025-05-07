@@ -1,24 +1,34 @@
+// utils/prisma.ts
 import "dotenv/config";
 import { PrismaClient } from "@prisma/client";
-import { PrismaNeon } from "@prisma/adapter-neon";
-import { neonConfig } from "@neondatabase/serverless";
-import ws from "ws";
 
-neonConfig.webSocketConstructor = ws;
-
-const connectionString = process.env.DATABASE_URL!;
-
-const adapter = new PrismaNeon({ connectionString });
+let prisma: PrismaClient;
 
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined;
 };
 
-const prisma =
-  globalForPrisma.prisma ?? new PrismaClient({ adapter: adapter as any }); // <- dodan `as any`
+if (!globalForPrisma.prisma) {
+  const databaseUrl = process.env.DATABASE_URL ?? "";
 
-if (process.env.NODE_ENV !== "production") {
+  if (databaseUrl.includes("neon.tech")) {
+    // NEON konfiguracija
+    const { PrismaNeon } = await import("@prisma/adapter-neon");
+    const { neonConfig } = await import("@neondatabase/serverless");
+    const ws = (await import("ws")).default;
+
+    neonConfig.webSocketConstructor = ws;
+
+    const adapter = new PrismaNeon({ connectionString: databaseUrl });
+    prisma = new PrismaClient({ adapter });
+  } else {
+    // LOKALNA konfiguracija
+    prisma = new PrismaClient();
+  }
+
   globalForPrisma.prisma = prisma;
+} else {
+  prisma = globalForPrisma.prisma;
 }
 
 export { prisma };
