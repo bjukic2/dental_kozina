@@ -133,6 +133,11 @@ export default function Navbar() {
                   </Link>
                 </li>
                 <li>
+                  <Link href="/galerija" className="hover:text-gray-300">
+                    GALERIJA OSMIJEHA
+                  </Link>
+                </li>
+                <li>
                   <Link href="/usluge" onClick={toggleMenu}>
                     USLUGE
                   </Link>
