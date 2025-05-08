@@ -25,9 +25,26 @@ export default function UsporedbeAdmin() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
+  const [errors, setErrors] = useState({
+    naziv: false,
+    opis: false,
+    beforeImage: false,
+    afterImage: false,
+  });
+
   const handleUpload = async () => {
-    if (!naziv || !beforeImage || !afterImage) {
-      setMessage("Naziv i obje slike su obavezni.");
+    const newErrors = {
+      naziv: !naziv,
+      opis: !opis,
+      beforeImage: !beforeImage,
+      afterImage: !afterImage,
+    };
+
+    setErrors(newErrors);
+
+    const hasError = Object.values(newErrors).some((v) => v);
+    if (hasError) {
+      setMessage("Niste unijeli sve podatke.");
       return;
     }
 
@@ -37,8 +54,8 @@ export default function UsporedbeAdmin() {
     const formData = new FormData();
     formData.append("naziv", naziv);
     formData.append("opis", opis);
-    formData.append("prijeImage", beforeImage);
-    formData.append("poslijeImage", afterImage);
+    formData.append("prijeImage", beforeImage!);
+    formData.append("poslijeImage", afterImage!);
 
     try {
       const res = await fetch("/api/upload", {
@@ -54,6 +71,12 @@ export default function UsporedbeAdmin() {
         setOpis("");
         setBeforeImage(null);
         setAfterImage(null);
+        setErrors({
+          naziv: false,
+          opis: false,
+          beforeImage: false,
+          afterImage: false,
+        });
       } else {
         setMessage(data.message || "Greška pri učitavanju.");
       }
@@ -77,17 +100,20 @@ export default function UsporedbeAdmin() {
           type="text"
           value={naziv}
           onChange={(e) => setNaziv(e.target.value)}
-          className="w-full border px-2 py-1 rounded"
-          required
+          className={`w-full border px-2 py-1 rounded ${
+            errors.naziv ? "border-red-500" : ""
+          }`}
         />
       </div>
 
       <div className="mb-4">
-        <label>Opis (opcionalno):</label>
+        <label>Opis:</label>
         <textarea
           value={opis}
           onChange={(e) => setOpis(e.target.value)}
-          className="w-full border px-2 py-1 rounded"
+          className={`w-full border px-2 py-1 rounded ${
+            errors.opis ? "border-red-500" : ""
+          }`}
         />
       </div>
 
@@ -97,6 +123,7 @@ export default function UsporedbeAdmin() {
           type="file"
           accept="image/*"
           onChange={(e) => setBeforeImage(e.target.files?.[0] || null)}
+          className={errors.beforeImage ? "border-red-500 border" : ""}
         />
         {beforeImage && (
           <img
@@ -113,6 +140,7 @@ export default function UsporedbeAdmin() {
           type="file"
           accept="image/*"
           onChange={(e) => setAfterImage(e.target.files?.[0] || null)}
+          className={errors.afterImage ? "border-red-500 border" : ""}
         />
         {afterImage && (
           <img

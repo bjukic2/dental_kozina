@@ -45,7 +45,7 @@ model usluga  {
 model usporedba {
   id          Int         @id @default(autoincrement())
   naziv       String  
-  opis        String?
+  opis        String
   prijeUrl    String
   poslijeUrl  String
   createdAt   DateTime    @default(now())

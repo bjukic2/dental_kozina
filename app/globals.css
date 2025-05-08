@@ -34,3 +34,7 @@ nav {
   background: #000000;
   color: #ffffff;
 }
+
+.react-compare-image {
+  touch-action: manipulation;
+}
