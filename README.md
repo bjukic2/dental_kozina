@@ -70,13 +70,14 @@ npm run dev
 ```
 
 > Then open your browser at:
-> https://localhost:3000
+> http://localhost:3000
 
 ### 5. Admin Access
 
-To access the admin dashboard, use the credentials defined in .env.local:
-**ADMIN_USERNAME**
-**ADMIN_PASSWORD**
+To access the admin dashboard, type http://localhost:3000/admin/ and use the credentials defined in .env.local:
+
+- **ADMIN_USERNAME**
+- **ADMIN_PASSWORD**
 
 ---
 
