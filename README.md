@@ -1,36 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Aestethic Dental Kozina - Web Application
 
-## Getting Started
+This is a full-stack web application for a dental clinic, built with **Next.js**, **TypeScript**, **Prisma**, **PostgreSQL**.
+It supports image uploads via **Cloudinary**, contact form email delivery via **SMTP**, and is deployed on **Vercel**.
 
-First, run the development server:
+## Live Demo
+
+[![Vercel](https://vercel.com/button)](https:/dental-kozina.vercel.app)
+
+## Tech Stack
+
+- **Framework**: [Next.js](https://nextjs.org/) with App Router
+- **Language**: Typescript
+- **Database (local)**: PostgreSQL with [pgAdmin 4](https://www.pgadmin.org/)
+- **Database (production)**: [Neon](https://neon.tech/)
+- **ORM**: [Prisma](https://www.prisma.io/)
+- **Image Hosting**: [Cloudinary](https://cloudinary.com/)
+- **Email Service**: [Nodemailer](https://nodemailer.com/)
+- **Deployment**: [Vercel](https://vercel.com/)
+
+---
+
+## Features
+
+- Dental service organized by categories
+- Image uploads via Cloudinary
+- Messages (contact form) stored in the database
+- Admin interface for managing services and messages with login
+- SEO-friendly URLs using services and category slugs
+- Fully responsive and styled with **Tailwind CSS**
+
+## Getting started
+
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/bjukic2/dental_kozina.git
+cd dental_kozina
+
+npm install
+```
+
+### 2. Configure environment variables
+
+```bash
+# Copy the example environment file and fill in your own values.
+cp .env.example .env.local
+# Never commit .env.local - it's ignored by .gitignore.
+```
+
+### 3. Set up the database
+
+```bash
+# Generate Prisma client and push schema to the local database:
+npx prisma generate
+npx prisma db push
+# Use PgAdmin4 or similar tool to inspect or manage your local database.
+```
+
+### 4. Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> Then open your browser at:
+> https://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 5. Admin Access
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+> To access the admin dashboard, use the credentials defined in .env.local:
+> **ADMIN_USERNAME** >**ADMIN_PASSWORD**
 
-## Learn More
+## Deployment (Production)
 
-To learn more about Next.js, take a look at the following resources:
+The app is deployed on **Vercel**.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- The Neon database is used in production instead of local database (set its URL as DATABASE_URL in Vercel).
+- All other .env.local credentials are the same and are set as Vercel Environment Variables.
+- Deployment is triggered via Git push.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Build for Production
 
-## Deploy on Vercel
+```bash
+npm run build
+npm start
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Author
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Made by **Bruno Jukić**
+[https://github.com/bjukic2]
