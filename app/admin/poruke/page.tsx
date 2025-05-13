@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useEffect, useState, useCallback } from "react";
 import { useSession } from "next-auth/react";
@@ -18,7 +18,9 @@ export default function AdminPoruke() {
 
   useEffect(() => {
     if (status === "unauthenticated") {
-      router.push(`/prijava?callbackUrl=${encodeURIComponent("/admin/poruke")}`);
+      router.push(
+        `/prijava?callbackUrl=${encodeURIComponent("/admin/poruke")}`
+      );
     } else if (status === "authenticated" && session?.user.role !== "admin") {
       router.push("/");
     }
@@ -32,7 +34,6 @@ export default function AdminPoruke() {
   const [od, setOd] = useState("");
   const [doDatuma, setDoDatuma] = useState("");
 
-  // Memoriramo fetchPoruke pomoću useCallback
   const fetchPoruke = useCallback(async () => {
     setLoading(true);
     const params = new URLSearchParams({ page: String(page) });
@@ -45,20 +46,20 @@ export default function AdminPoruke() {
     setPoruke(data.poruke);
     setTotalPages(data.totalPages);
     setLoading(false);
-  }, [page, q, od, doDatuma]); 
+  }, [page, q, od, doDatuma]);
 
   useEffect(() => {
     fetchPoruke();
-  }, [page, q, od, doDatuma, fetchPoruke]); 
+  }, [page, q, od, doDatuma, fetchPoruke]);
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setPage(1); 
+    setPage(1);
     fetchPoruke();
   };
 
   const obrisiPoruku = async (id: number) => {
     await fetch(`/api/admin/poruke/${id}`, { method: "DELETE" });
-    fetchPoruke(); 
+    fetchPoruke();
   };
 
   return (

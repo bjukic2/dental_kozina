@@ -5,7 +5,9 @@ It supports image uploads via **Cloudinary**, contact form email delivery via **
 
 ## Live Demo
 
-[![Vercel](https://vercel.com/button)](https:/dental-kozina.vercel.app)
+[Aestethic Dental Kozina](https://dental-kozina.vercel.app)
+
+---
 
 ## Tech Stack
 
@@ -29,12 +31,16 @@ It supports image uploads via **Cloudinary**, contact form email delivery via **
 - SEO-friendly URLs using services and category slugs
 - Fully responsive and styled with **Tailwind CSS**
 
+---
+
 ## Getting started
 
 ### 1. Clone the repo
 
 ```bash
+#Unutar terminala
 git clone https://github.com/bjukic2/dental_kozina.git
+
 cd dental_kozina
 
 npm install
@@ -68,14 +74,17 @@ npm run dev
 
 ### 5. Admin Access
 
-> To access the admin dashboard, use the credentials defined in .env.local:
-> **ADMIN_USERNAME** >**ADMIN_PASSWORD**
+To access the admin dashboard, use the credentials defined in .env.local:
+**ADMIN_USERNAME**
+**ADMIN_PASSWORD**
+
+---
 
 ## Deployment (Production)
 
-The app is deployed on **Vercel**.
+The app is deployed on **Vercel**:
 
-- The Neon database is used in production instead of local database (set its URL as DATABASE_URL in Vercel).
+- The Neon database is used in production <ins>instead</ins> of local database (set its URL as DATABASE_URL in Vercel).
 - All other .env.local credentials are the same and are set as Vercel Environment Variables.
 - Deployment is triggered via Git push.
 
@@ -85,6 +94,8 @@ The app is deployed on **Vercel**.
 npm run build
 npm start
 ```
+
+---
 
 ## Author
 
