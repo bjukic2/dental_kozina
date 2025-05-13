@@ -5,7 +5,7 @@ import Image from "next/image";
 import KontaktForma from "@/components/KontaktForma";
 
 const adresa = process.env.ADRESA;
-const adresa1 = process.env.ADRESA1;
+const adresa_text = process.env.ADRESA_TEXT;
 const mobitel = process.env.MOBITEL;
 const email = process.env.EMAIL;
 
@@ -32,7 +32,7 @@ export default function Kontakt() {
 
             <div className="flex items-center gap-2 text-gray-700">
               <Image src={location} alt="Lokacija" width={20} height={20} />
-              <span>{adresa1}</span>
+              <span>{adresa_text}</span>
             </div>
 
             <a
