@@ -86,7 +86,7 @@ To access the admin dashboard, type http://localhost:3000/admin/ and use the cre
 The app is deployed on **Vercel**:
 
 - The Neon database is used in production <ins>instead</ins> of local database (set its URL as DATABASE_URL in Vercel).
-- All other .env.local credentials are the same and are set as Vercel Environment Variables.
+- All other .env.local variables are the same and are set as Vercel Environment Variables.
 - Deployment is triggered via Git push.
 
 ### Build for Production
