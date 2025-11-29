@@ -4,10 +4,10 @@ import Link from "next/link";
 import Image from "next/image";
 
 type ResolvedParams = { kategorija: string };
-type Props = { params: ResolvedParams };
+type Props = { params: Promise<ResolvedParams> };
 
 export default async function KategorijaPage({ params }: Props) {
-  const { kategorija } = params;
+  const { kategorija } = await params;
 
   const kat = await prisma.kategorija.findUnique({
     where: { slug: kategorija },

@@ -3,10 +3,10 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 
 type ResolvedParams = { kategorija: string; usluga: string };
-type Props = { params: ResolvedParams };
+type Props = { params: Promise<ResolvedParams> };
 
 export default async function UslugaPage({ params }: Props) {
-  const { kategorija, usluga } = params;
+  const { kategorija, usluga } = await params;
 
   const service = await prisma.usluga.findFirst({
     where: { slug: usluga, kategorija: { slug: kategorija } },
