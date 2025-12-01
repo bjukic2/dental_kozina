@@ -7,7 +7,7 @@ import ScrollToTopButton from "@/components/ScrollToTopButton";
 export default function HomePage() {
   return (
     <main className="flex flex-col items-center">
-      <section className="w-full bg-blue-600 text-white py-20 px-6 text-center">
+      <section className="w-full bg-gray-800 text-white py-20 px-6 text-center">
         <h1 className="text-4xl md:text-6xl font-bold mb-6">
           Dobrodošli u Dental Kozina
         </h1>
@@ -15,7 +15,7 @@ export default function HomePage() {
           Vaš osmijeh je naša strast. Moderna stomatologija za cijelu obitelj.
         </p>
         <Link href="/kontakt">
-          <button className="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition cursor-pointer">
+          <button className="bg-white text-gray-800 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition cursor-pointer">
             Dogovori termin
           </button>
         </Link>
@@ -43,7 +43,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="w-full bg-white py-20 px-6">
+      <section className="w-full bg-gray-500 py-20 px-6">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
           <div className="flex-1">
             <Image

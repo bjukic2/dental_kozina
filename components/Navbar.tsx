@@ -50,7 +50,7 @@ export default function Navbar() {
           text-white 
           py-4 px-10 
           rounded-full shadow-lg
-          w-[95%] md:w-[90%] lg:w-[60%]
+          w-[95%]
         "
       >
         <div className="flex items-center justify-between gap-4 md:gap-10">
@@ -67,7 +67,7 @@ export default function Navbar() {
           </div>
 
           {/* DESKTOP NAV */}
-          <ul className="hidden md:flex gap-6 items-center text-sm font-medium">
+          <ul className="hidden lg:flex gap-4 md:gap-6 items-center text-base md:text-lg lg:text-xl font-medium">
             <li>
               <Link href="/" className="hover:text-gray-300">
                 POČETNA
@@ -111,7 +111,7 @@ export default function Navbar() {
         {menuOpen && (
           <>
             <motion.div
-              className="fixed inset-0 bg-black/50 z-40"
+              className="fixed inset-0 bg-blue-400 z-40"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
