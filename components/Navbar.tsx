@@ -27,37 +27,46 @@ export default function Navbar() {
             setShowNavbar(true);
           }
         }
+
         setLastScrollY(currentScrollY);
       }
     };
 
     window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
   return (
     <>
+      {/* NAVBAR */}
       <motion.nav
         initial={{ y: 0 }}
-        animate={{ y: showNavbar ? 0 : "-100%" }}
+        animate={{ y: showNavbar ? 0 : "-150%" }}
         transition={{ duration: 0.3 }}
-        className="w-full bg-gray-800 text-white py-4 z-50 fixed top-0 left-0 shadow-md"
+        className="
+          fixed left-1/2 -translate-x-1/2 
+          top-4 z-50 
+          bg-gray-800/90 backdrop-blur-xl
+          text-white 
+          py-4 px-10 
+          rounded-full shadow-lg
+          w-[95%] md:w-[90%] lg:w-[60%]
+        "
       >
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-12">
-          {/* Logo */}
+        <div className="flex items-center justify-between gap-4 md:gap-10">
+          {/* LOGO */}
           <Link href="/" className="flex items-center">
-            <Image src={logo} alt="logo" width={150} height={40} />
+            <Image src={logo} alt="logo" width={140} height={40} />
           </Link>
 
+          {/* MOBILE BUTTON */}
           <div className="md:hidden">
             <button onClick={toggleMenu} aria-label="Toggle Menu">
               {menuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
 
+          {/* DESKTOP NAV */}
           <ul className="hidden md:flex gap-6 items-center text-sm font-medium">
             <li>
               <Link href="/" className="hover:text-gray-300">
@@ -86,9 +95,10 @@ export default function Navbar() {
             </li>
           </ul>
 
+          {/* DESKTOP CTA */}
           <div className="hidden md:block">
             <Link href="/kontakt">
-              <button className="border border-white text-white bg-transparent px-4 py-2 rounded hover:bg-white hover:text-gray-800 transition cursor-pointer">
+              <button className="border border-white text-white px-4 py-2 rounded-full hover:bg-white hover:text-gray-800 transition cursor-pointer">
                 PRVI PREGLED
               </button>
             </Link>
@@ -96,6 +106,7 @@ export default function Navbar() {
         </div>
       </motion.nav>
 
+      {/* MOBILE MENU */}
       <AnimatePresence>
         {menuOpen && (
           <>
@@ -133,7 +144,7 @@ export default function Navbar() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/galerija" className="hover:text-gray-300">
+                  <Link href="/galerija" onClick={toggleMenu}>
                     GALERIJA OSMIJEHA
                   </Link>
                 </li>
@@ -150,7 +161,7 @@ export default function Navbar() {
               </ul>
 
               <button
-                className="mt-6 border border-white text-white bg-transparent px-4 py-2 rounded hover:bg-white hover:text-gray-800 transition w-full"
+                className="mt-6 border border-white text-white px-4 py-2 rounded-full hover:bg-white hover:text-gray-800 transition w-full"
                 onClick={toggleMenu}
               >
                 PRVI PREGLED
