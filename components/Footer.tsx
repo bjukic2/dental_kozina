@@ -1,71 +1,89 @@
+import Image from "next/image";
 import Link from "next/link";
-import { Facebook, Instagram } from "lucide-react";
+import logo from "./icons/logo.png";
+import { Facebook, Instagram, Phone, Mail, MapPin } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="w-full py-10 bg-gray-100 border-t">
-      <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
-        {/* Logo & opis */}
-        <div className="flex flex-col items-center">
-          <h6 className="text-xl font-semibold mb-3">
-            Aesthetic Dental Kozina
-          </h6>
-          <p className="text-sm text-gray-400 max-w-xs">
-            Moderna dentalna ordinacija specijalizirana za estetsku, opću i
-            specijalističku stomatologiju.
-          </p>
-        </div>
+    <footer className="bg-gray-900 text-white py-8 px-4">
+      {/* LOGO */}
+      <div className="flex justify-center mb-4">
+        <Link href="/">
+          <Image src={logo} alt="logo" width={160} height={50} />
+        </Link>
+      </div>
 
-        {/* Navigacija */}
-        <div className="flex flex-col items-center">
-          <h6 className="text-lg font-semibold mb-4">Navigacija</h6>
-          <ul className="space-y-2 text-sm text-gray-400">
-            <li>
-              <Link href="/" className="hover:underline">
-                Početna
-              </Link>
-            </li>
-            <li>
-              <Link href="/oNama" className="hover:underline">
-                O nama
-              </Link>
-            </li>
-            <li>
-              <Link href="/usluge" className="hover:underline">
-                Usluge
-              </Link>
-            </li>
-            <li>
-              <Link href="/kontakt" className="hover:underline">
-                Kontakt
-              </Link>
-            </li>
-          </ul>
-        </div>
+      {/* KONTEJNER KOJI CENTRIRA SVE */}
+      <div className="flex justify-center">
+        {/* WRAPPER KOJI DEFINIRA ŠIRINU TRI NASLOVA */}
+        <div className="inline-block">
+          {/* CRTA ISPOD LOGA */}
+          <div className="h-0.5 bg-gray-500 mx-auto mb-10 w-full"></div>
 
-        {/* Kontakt i društvene mreže */}
-        <div className="flex flex-col items-center">
-          <h6 className="text-lg font-semibold mb-4">Kontakt</h6>
-          <ul className="space-y-2 text-sm text-gray-400 mb-4">
-            <li>📍 Adresa: …</li>
-            <li>📞 Telefon: …</li>
-            <li>✉️ Email: …</li>
-          </ul>
+          {/* TRI STUPCA */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-20 text-center">
+            {/* DRUŠTVENE MREŽE */}
+            <div className="flex flex-col items-center">
+              <h3 className="text-lg font-semibold mb-4">Društvene mreže</h3>
+              <div className="flex flex-col items-center gap-3">
+                <Link
+                  href="https://facebook.com"
+                  className="flex items-center gap-2 hover:text-gray-300"
+                >
+                  <Facebook size={20} />
+                  <span>Facebook</span>
+                </Link>
+                <Link
+                  href="https://instagram.com"
+                  className="flex items-center gap-2 hover:text-gray-300"
+                >
+                  <Instagram size={20} />
+                  <span>Instagram</span>
+                </Link>
+              </div>
+            </div>
 
-          <div className="flex items-center gap-6 justify-center">
-            <Link href="https://instagram.com" target="_blank">
-              <Instagram className="w-6 h-6 text-gray-400 hover:text-black transition" />
-            </Link>
-            <Link href="https://facebook.com" target="_blank">
-              <Facebook className="w-6 h-6 text-gray-400 hover:text-black transition" />
-            </Link>
+            {/* RADNO VRIJEME */}
+            <div className="flex flex-col items-center">
+              <h3 className="text-lg font-semibold mb-4">Radno vrijeme</h3>
+              <div className="space-y-1">
+                <p>
+                  Pon – Pet: <span className="font-medium">08:00 – 16:00</span>
+                </p>
+                <p>
+                  Subota: <span className="font-medium">09:00 – 13:00</span>
+                </p>
+                <p>
+                  Nedjelja: <span className="font-medium">Zatvoreno</span>
+                </p>
+              </div>
+            </div>
+
+            {/* KONTAKT */}
+            <div className="flex flex-col items-center">
+              <h3 className="text-lg font-semibold mb-4">Kontakt</h3>
+              <div className="space-y-2">
+                <p className="flex items-center justify-center gap-2">
+                  <Phone size={18} />
+                  <span>+385 99 123 4567</span>
+                </p>
+                <p className="flex items-center justify-center gap-2">
+                  <Mail size={18} />
+                  <span>info@ordinacija.hr</span>
+                </p>
+                <p className="flex items-center justify-center gap-2">
+                  <MapPin size={18} />
+                  <span>Ulica 1, Zagreb</span>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="text-center text-sm text-gray-700 mt-10 px-4">
-        © {new Date().getFullYear()} Aesthetic Dental Kozina. Sva prava
-        pridržana.
+      {/* COPYRIGHT */}
+      <div className="text-center mt-10 text-sm text-gray-400">
+        © {new Date().getFullYear()} Dental Kozina. Sva prava pridržana.
       </div>
     </footer>
   );
