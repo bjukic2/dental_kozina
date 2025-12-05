@@ -1,8 +1,12 @@
+// Updated AdminPoruke styling with delete confirmation and improved filter UI
+
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+import DeleteConfirm from "@/components/DeleteConfirm"; // ispravljeno ime
 
 interface Poruka {
   id: number;
@@ -34,6 +38,10 @@ export default function AdminPoruke() {
   const [od, setOd] = useState("");
   const [doDatuma, setDoDatuma] = useState("");
 
+  // modal states
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedId, setSelectedId] = useState<number | null>(null);
+
   const fetchPoruke = useCallback(async () => {
     setLoading(true);
     const params = new URLSearchParams({ page: String(page) });
@@ -51,6 +59,7 @@ export default function AdminPoruke() {
   useEffect(() => {
     fetchPoruke();
   }, [page, q, od, doDatuma, fetchPoruke]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setPage(1);
@@ -64,45 +73,55 @@ export default function AdminPoruke() {
 
   return (
     <div className="max-w-4xl mx-auto p-6 space-y-6">
+      <Link
+        href="/admin"
+        className="mb-6 inline-block px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg shadow"
+      >
+        ⬅ Povratak na Admin Panel
+      </Link>
+
       <h1 className="text-2xl font-bold">Poruke korisnika</h1>
 
+      {/* FILTER FORM */}
       <form
         onSubmit={handleSubmit}
-        className="flex flex-wrap gap-4 items-end border p-4 rounded bg-gray-50"
+        className="flex flex-wrap gap-4 items-end p-4 rounded-xl bg-blue-50 shadow-sm border border-blue-100"
       >
         <div className="flex flex-col">
-          <label className="text-sm font-medium">Pretraga (ime/email)</label>
+          <label className="text-sm font-medium text-gray-700">
+            Pretraga (ime/email)
+          </label>
           <input
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            className="border rounded p-2"
+            className="rounded p-2 bg-white border border-blue-100 shadow-inner"
             placeholder="npr. Ana"
           />
         </div>
 
         <div className="flex flex-col">
-          <label className="text-sm font-medium">Od datuma</label>
+          <label className="text-sm font-medium text-gray-700">Od datuma</label>
           <input
             type="date"
             value={od}
             onChange={(e) => setOd(e.target.value)}
-            className="border rounded p-2"
+            className="rounded p-2 bg-white border border-blue-100 shadow-inner"
           />
         </div>
 
         <div className="flex flex-col">
-          <label className="text-sm font-medium">Do datuma</label>
+          <label className="text-sm font-medium text-gray-700">Do datuma</label>
           <input
             type="date"
             value={doDatuma}
             onChange={(e) => setDoDatuma(e.target.value)}
-            className="border rounded p-2"
+            className="rounded p-2 bg-white border border-blue-100 shadow-inner"
           />
         </div>
 
         <button
           type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+          className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 shadow"
         >
           Filtriraj
         </button>
@@ -113,50 +132,82 @@ export default function AdminPoruke() {
       ) : poruke.length === 0 ? (
         <p>Nema poruka.</p>
       ) : (
-        <div className="space-y-4">
+        <div className="space-y-6">
           {poruke.map((p) => (
             <div
               key={p.id}
-              className="border p-4 rounded shadow flex justify-between items-start"
+              className="bg-blue-50 border border-blue-100 p-5 rounded-xl shadow-sm hover:shadow-xl transition-shadow duration-300"
             >
-              <div>
-                <p>
-                  <strong>Ime:</strong> {p.ime}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4 text-sm text-gray-700">
+                <div>
+                  <p className="font-semibold text-gray-900">Ime:</p>
+                  <p>{p.ime}</p>
+                </div>
+
+                <div>
+                  <p className="font-semibold text-gray-900">Email:</p>
+                  <p className="break-all">{p.email}</p>
+                </div>
+
+                <div>
+                  <p className="font-semibold text-gray-900">Vrijeme:</p>
+                  <p>{new Date(p.createdAt).toLocaleString()}</p>
+                </div>
+              </div>
+
+              <div className="mt-2">
+                <p className="font-semibold text-gray-900 mb-1 text-lg">
+                  Poruka:
                 </p>
-                <p>
-                  <strong>Email:</strong> {p.email}
-                </p>
-                <p>
-                  <strong>Poruka:</strong> {p.poruka}
-                </p>
-                <p className="text-sm text-gray-500">
-                  {new Date(p.createdAt).toLocaleString()}
+                <p className="text-gray-900 whitespace-pre-line leading-relaxed bg-white p-3 rounded-lg shadow-inner">
+                  {p.poruka}
                 </p>
               </div>
-              <button
-                onClick={() => obrisiPoruku(p.id)}
-                className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
-              >
-                Obriši
-              </button>
+
+              <div className="flex justify-end mt-4">
+                <button
+                  onClick={() => {
+                    setSelectedId(p.id);
+                    setModalOpen(true);
+                  }}
+                  className="bg-red-500 text-white px-4 py-1.5 rounded hover:bg-red-600 shadow"
+                >
+                  Obriši
+                </button>
+              </div>
             </div>
           ))}
         </div>
       )}
 
+      {/* PAGINATION */}
       <div className="flex justify-center gap-2 mt-6">
         {Array.from({ length: totalPages }, (_, i) => i + 1).map((num) => (
           <button
             key={num}
             onClick={() => setPage(num)}
-            className={`px-3 py-1 rounded border ${
-              page === num ? "bg-blue-600 text-white" : "bg-white text-blue-600"
-            }`}
+            className={`px-3 py-1 rounded border shadow-sm hover:shadow-md transition-shadow
+              ${
+                page === num
+                  ? "bg-blue-600 text-white"
+                  : "bg-white text-blue-600"
+              }`}
           >
             {num}
           </button>
         ))}
       </div>
+
+      {/* DELETE CONFIRM MODAL */}
+      <DeleteConfirm
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        onConfirm={() => {
+          if (selectedId) {
+            obrisiPoruku(selectedId);
+          }
+        }}
+      />
     </div>
   );
 }

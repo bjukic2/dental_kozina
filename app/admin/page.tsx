@@ -1,13 +1,14 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useEffect } from "react";
 import Link from "next/link";
 
 export default function AdminPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     if (status === "unauthenticated") {
@@ -22,27 +23,34 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="max-w-xl mx-auto px-6 py-20">
-      <h1 className="text-3xl font-bold mb-8">Admin Panel</h1>
+    <div className="max-w-2xl mx-auto px-6 py-20">
+      <h1 className="text-4xl font-bold mb-10 text-center">Admin Panel</h1>
 
-      <ul className="space-y-4">
-        <li>
-          <Link
-            href="/admin/poruke"
-            className="block bg-blue-600 text-white text-center py-3 rounded hover:bg-blue-700 transition"
-          >
-            Pogledaj poruke
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/admin/usporedbe"
-            className="block bg-green-600 text-white text-center py-3 rounded hover:bg-green-700 transition"
-          >
-            Dodaj usporedbu
-          </Link>
-        </li>
-      </ul>
+      <div className="flex justify-center gap-4 mb-12">
+        <Link
+          href="/admin/poruke"
+          className={`px-6 py-3 rounded-xl shadow transition font-medium border
+            ${
+              pathname === "/admin/poruke"
+                ? "bg-blue-600 text-white border-blue-700 scale-105"
+                : "bg-white text-blue-700 border-blue-300 hover:bg-blue-50"
+            }`}
+        >
+          Poruke
+        </Link>
+
+        <Link
+          href="/admin/usporedbe"
+          className={`px-6 py-3 rounded-xl shadow transition font-medium border
+            ${
+              pathname === "/admin/usporedbe"
+                ? "bg-green-600 text-white border-green-700 scale-105"
+                : "bg-white text-green-700 border-green-300 hover:bg-green-50"
+            }`}
+        >
+          Usporedbe
+        </Link>
+      </div>
     </div>
   );
 }
