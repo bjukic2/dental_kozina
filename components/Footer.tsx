@@ -9,7 +9,7 @@ export default function Footer() {
       {/* LOGO */}
       <div className="flex justify-center mb-4">
         <Link href="/">
-          <Image src={logo} alt="logo" width={160} height={50} />
+          <Image src={logo} alt="logo" width={210} height={90} />
         </Link>
       </div>
 
