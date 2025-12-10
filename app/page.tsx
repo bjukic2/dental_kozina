@@ -6,77 +6,108 @@ import ScrollToTopButton from "@/components/ScrollToTopButton";
 
 export default function HomePage() {
   return (
-    <main className="flex flex-col items-center">
-      <section className="w-full bg-gray-800 text-white py-20 px-6 text-center">
-        <h1 className="text-4xl md:text-6xl font-bold mb-6">
-          Dobrodošli u Dental Kozina
-        </h1>
-        <p className="text-lg md:text-2xl mb-8">
-          Vaš osmijeh je naša strast. Moderna stomatologija za cijelu obitelj.
-        </p>
-        <Link href="/kontakt">
-          <button className="bg-white text-gray-800 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition cursor-pointer">
-            Dogovori termin
-          </button>
-        </Link>
-      </section>
+    <main className="flex flex-col bg-white text-gray-800">
+      {/* HERO SECTION */}
+      <section className="relative w-full bg-gradient-to-r from-blue-50 to-white py-24 px-6">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
+              Dental Kozina <br />
+              <span className="text-blue-600">
+                Centar moderne stomatologije
+              </span>
+            </h1>
+            <p className="text-lg text-gray-600 mb-8 max-w-lg">
+              Pružamo vrhunsku dentalnu njegu koristeći najmoderniju
+              tehnologiju. Vaš osmijeh je naša odgovornost.
+            </p>
+            <Link href="/kontakt">
+              <button className="bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-blue-700 transition shadow-md">
+                Dogovorite termin
+              </button>
+            </Link>
+          </div>
 
-      <section className="max-w-6xl w-full px-6 py-16">
-        <h2 className="text-3xl font-bold text-center mb-12">Naše usluge</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-          {[
-            "Estetska stomatologija",
-            "Implantologija",
-            "Ortodoncija",
-            "Parodontologija",
-          ].map((service, index) => (
-            <div
-              key={index}
-              className="bg-white shadow-md rounded-lg p-6 text-center hover:shadow-lg transition"
-            >
-              <h3 className="text-xl font-semibold mb-4">{service}</h3>
-              <p className="text-gray-600 text-sm">
-                Vrhunski tretmani prilagođeni vašim potrebama i željama.
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="w-full bg-gray-500 py-20 px-6">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
-          <div className="flex-1">
+          <div className="relative">
             <Image
               src="/images/dental.jpg"
-              alt="Dental Team"
+              alt="Dental clinic"
               width={600}
-              height={400}
-              className="rounded-lg shadow-lg"
+              height={450}
+              className="rounded-2xl shadow-lg object-cover"
             />
-          </div>
-          <div className="flex-1">
-            <h2 className="text-3xl font-bold mb-6">Zašto izabrati nas?</h2>
-            <p className="text-gray-700 mb-4">
-              Iskustvo, stručnost i ljubaznost su naši zaštitni znakovi.
-              Koristimo najsuvremeniju tehnologiju kako bismo pružili najbolje
-              moguće rezultate.
-            </p>
-            <p className="text-gray-700">
-              Vaše zadovoljstvo i zdravlje su naš prioritet!
-            </p>
           </div>
         </div>
       </section>
 
-      <section className="w-full bg-blue-600 text-white py-20 px-6 text-center">
-        <h2 className="text-3xl font-bold mb-6">Kontaktirajte nas</h2>
-        <p className="text-lg mb-8">
-          Imate pitanja? Rado ćemo vam pomoći! Kontaktirajte nas putem telefona
-          ili e-maila.
+      {/* SERVICES */}
+      <section className="py-24 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-4">Naše usluge</h2>
+          <p className="text-gray-500 text-center mb-16">
+            Sve na jednom mjestu za zdrav i lijep osmijeh
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            {[
+              { title: "Estetska stomatologija", icon: "🦷" },
+              { title: "Implantologija", icon: "🪛" },
+              { title: "Ortodoncija", icon: "😁" },
+              { title: "Parodontologija", icon: "🫧" },
+            ].map((service, index) => (
+              <div
+                key={index}
+                className="bg-white border border-gray-100 rounded-2xl p-8 text-center shadow-sm hover:shadow-lg transition"
+              >
+                <div className="text-4xl mb-4">{service.icon}</div>
+                <h3 className="text-lg font-semibold mb-3">{service.title}</h3>
+                <p className="text-gray-500 text-sm">
+                  Individualan pristup i suvremene metode liječenja.
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHY US */}
+      <section className="py-24 px-6 bg-gray-50">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+          <div>
+            <Image
+              src="/images/team.jpg"
+              alt="Dental team"
+              width={600}
+              height={450}
+              className="rounded-2xl shadow-lg object-cover"
+            />
+          </div>
+
+          <div>
+            <h2 className="text-3xl font-bold mb-6">
+              Zašto odabrati našu ordinaciju?
+            </h2>
+            <ul className="space-y-4 text-gray-600">
+              <li>• Višegodišnje iskustvo i stručan tim</li>
+              <li>• Bezbolni zahvati uz suvremenu opremu</li>
+              <li>• Individualan pristup svakom pacijentu</li>
+              <li>• Transparentne cijene bez skrivenih troškova</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-24 px-6 bg-blue-600 text-white text-center">
+        <h2 className="text-3xl font-bold mb-6">
+          Rezervirajte svoj termin već danas
+        </h2>
+        <p className="text-blue-100 mb-8 max-w-xl mx-auto">
+          Naš tim stoji vam na raspolaganju za sva pitanja i konzultacije.
         </p>
         <Link href="/kontakt">
-          <button className="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition cursor-pointer">
-            Pošaljite poruku
+          <button className="bg-white text-blue-600 px-10 py-4 rounded-xl font-semibold hover:bg-gray-100 transition shadow-md">
+            Kontaktirajte nas
           </button>
         </Link>
         <ScrollToTopButton />
