@@ -11,7 +11,7 @@ const email = process.env.EMAIL;
 
 export default function Kontakt() {
   return (
-    <div className="max-w-6xl mx-auto py-20 px-6 space-y-16">
+    <div className="max-w-6xl mx-auto py-20 px-6 space-y-20">
       {/* Naslov sekcije */}
       <div className="text-center space-y-3">
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
@@ -23,16 +23,16 @@ export default function Kontakt() {
       </div>
 
       {/* Kontakt kartice + forma */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-        {/* Lijevi dio - info kartice */}
-        <div className="space-y-8">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-16">
+        {/* Lijevi dio */}
+        <div className="space-y-10">
           {/* Radno vrijeme */}
-          <div className="p-6 rounded-2xl bg-white shadow-md border">
+          <div className="p-6 rounded-2xl bg-white shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
             <h6 className="text-lg font-semibold text-gray-700">
               Radno vrijeme
             </h6>
             <h5 className="text-2xl font-bold text-gray-900 mt-2">
-              Pon - Pet 08:00 – 19:00
+              Pon – Pet 08:00 – 19:00
             </h5>
             <p className="text-gray-600 mt-3">
               Za sve informacije možete nas kontaktirati putem telefona ili
@@ -41,7 +41,7 @@ export default function Kontakt() {
           </div>
 
           {/* Kontakt info */}
-          <div className="p-6 rounded-2xl bg-white shadow-md border space-y-5">
+          <div className="p-6 rounded-2xl bg-white shadow-[0_10px_30px_rgba(0,0,0,0.06)] space-y-5">
             <h6 className="text-lg font-semibold text-gray-700">
               Kontakt podaci
             </h6>
@@ -53,7 +53,7 @@ export default function Kontakt() {
 
             <a
               href={`tel:${mobitel}`}
-              className="flex items-center gap-3 text-gray-800 hover:text-blue-600 transition text-lg"
+              className="flex items-center gap-3 text-gray-800 hover:text-blue-600 transition-colors text-lg"
             >
               <Image src={telephone} alt="Telefon" width={26} height={26} />
               <span>{mobitel}</span>
@@ -61,7 +61,7 @@ export default function Kontakt() {
 
             <a
               href={`mailto:${email}`}
-              className="flex items-center gap-3 text-gray-800 hover:text-blue-600 transition text-lg"
+              className="flex items-center gap-3 text-gray-800 hover:text-blue-600 transition-colors text-lg"
             >
               <Image src={mail} alt="Email" width={26} height={26} />
               <span>{email}</span>
@@ -70,21 +70,22 @@ export default function Kontakt() {
         </div>
 
         {/* Kontakt forma */}
-        <div className="p-6 md:p-8 bg-white shadow-md border rounded-2xl">
+        <div className="p-8 bg-white rounded-2xl shadow-[0_15px_40px_rgba(0,0,0,0.08)]">
           <KontaktForma />
         </div>
       </div>
 
       {/* Mapa */}
-      <div>
-        <h3 className="text-xl font-bold text-gray-800 mb-4">Lokacija</h3>
-        <div className="w-full h-80 rounded-2xl overflow-hidden shadow-md border">
+      <div className="space-y-4">
+        <h3 className="text-xl font-bold text-gray-800">Lokacija</h3>
+        <div className="w-full h-64 md:h-72 rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
           <iframe
             src={adresa}
             width="100%"
             height="100%"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
+            className="border-0"
           ></iframe>
         </div>
       </div>
