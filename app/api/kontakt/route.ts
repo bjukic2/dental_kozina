@@ -2,7 +2,7 @@ export const runtime = "nodejs";
 
 import { NextResponse } from "next/server";
 import { prisma } from "@/utils/prisma";
-import nodemailer from "nodemailer";
+import nodemailer, { SendMailOptions } from "nodemailer";
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 MB
 const ALLOWED_TYPES = ["image/jpeg", "image/png", "application/pdf"];
@@ -70,9 +70,9 @@ export async function POST(req: Request) {
     });
 
     /* --------------------------------------------
-       Attachment (samo ordinacija)
-    -------------------------------------------- */
-    const attachments: any[] = [];
+   Attachment (samo ordinacija)
+-------------------------------------------- */
+    const attachments: SendMailOptions["attachments"] = [];
 
     if (ortopan && ortopan.size > 0) {
       const buffer = Buffer.from(await ortopan.arrayBuffer());
