@@ -21,7 +21,7 @@ export default function Navbar() {
         transition={{ duration: 0.2 }}
         className="
     fixed top-0 left-0 w-full z-50
-    bg-gray-800/90 backdrop-blur-xl
+    bg-gray-950 backdrop-blur-xl
     shadow-md
   "
       >

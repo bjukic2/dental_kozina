@@ -5,7 +5,7 @@ import { Facebook, Instagram, Phone, Mail, MapPin } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white py-8 px-4">
+    <footer className="bg-gray-950 text-white py-8 px-4">
       {/* LOGO */}
       <div className="flex justify-center mb-4">
         <Link href="/">

@@ -14,7 +14,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #f7f4e4;
+    --background: #38310923;
     --foreground: #000000;
   }
 }
@@ -26,12 +26,10 @@ body {
 }
 
 footer {
-  background: #000000;
   color: #ffffff;
 }
 
 nav {
-  background: #080500;
   color: #ffffff;
 }
 
