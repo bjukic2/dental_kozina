@@ -72,7 +72,7 @@ export async function POST(req: Request) {
     /* --------------------------------------------
        Attachment (samo ordinacija)
     -------------------------------------------- */
-    let attachments: any[] = [];
+    const attachments: any[] = [];
 
     if (ortopan && ortopan.size > 0) {
       const buffer = Buffer.from(await ortopan.arrayBuffer());
