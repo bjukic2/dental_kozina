@@ -6,7 +6,7 @@ import ScrollToTopButton from "@/components/ScrollToTopButton";
 
 export default function HomePage() {
   return (
-    <main className="flex flex-col bg-black text-white">
+    <main className="flex flex-col bg-black text-white pt-20">
       {/* HERO SECTION */}
       <section className="relative w-full bg-linear-to-b from-gray-950 via-gray-900 to-gray-900 py-24 px-6 md:py-32 md:px-12">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">

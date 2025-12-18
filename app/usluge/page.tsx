@@ -6,7 +6,7 @@ export default async function SveKategorije() {
   const kategorije = await prisma.kategorija.findMany();
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-20 bg-[linear-gradient(to_bottom,#030712_0%,#111827_50%,#030712_100%)]">
+    <div className="pt-20 max-w-6xl mx-auto px-6 py-20 bg-[linear-gradient(to_bottom,#030712_0%,#111827_50%,#030712_100%)]">
       <h1 className="text-4xl font-bold text-center text-white mb-12">
         Naše usluge
       </h1>

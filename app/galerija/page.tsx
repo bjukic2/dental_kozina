@@ -9,7 +9,7 @@ export default async function GalerijaPage() {
   });
 
   return (
-    <div className="px-4 py-8 bg-[linear-gradient(to_bottom,#030712_0%,#111827_50%,#030712_100%)]">
+    <div className="pt-20 px-4 py-8 bg-[linear-gradient(to_bottom,#030712_0%,#111827_50%,#030712_100%)]">
       <h1 className="text-3xl font-bold mb-8 text-center max-w-5xl mx-auto text-white">
         Galerija osmijeha
       </h1>

@@ -11,9 +11,9 @@ const email = process.env.EMAIL;
 
 export default function Kontakt() {
   return (
-    <div className="max-w-6xl mx-auto py-20 px-6 space-y-20 bg-[linear-gradient(to_bottom,#030712_0%,#111827_50%,#030712_100%)]">
+    <div className="pt-20 max-w-6xl mx-auto py-20 px-6 space-y-20 bg-[linear-gradient(to_bottom,#030712_0%,#111827_50%,#030712_100%)]">
       {/* Naslov sekcije */}
-      <div className="text-center space-y-3 pt-6 md:pt-6">
+      <div className="text-center space-y-3 pt-8">
         <h2 className="text-3xl md:text-4xl font-bold text-blue-300">
           Kontaktirajte nas
         </h2>

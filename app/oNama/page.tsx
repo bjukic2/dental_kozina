@@ -6,7 +6,7 @@ import ScrollToTopButton from "@/components/ScrollToTopButton";
 
 export default function ONamaPage() {
   return (
-    <main className="bg-black text-white">
+    <main className="pt-20 bg-black text-white">
       {/* UVOD */}
       <section className="bg-linear-to-b from-gray-950 to-gray-900 max-w-5xl mx-auto px-6 py-24 text-center">
         <h1 className="text-4xl sm:text-5xl font-bold mb-6 text-gray-300">
