@@ -17,7 +17,7 @@ export default async function KategorijaPage({ params }: Props) {
   if (!kat) return notFound();
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-20">
+    <div className="max-w-6xl mx-auto px-6 py-20 bg-[linear-gradient(to_bottom,#030712_0%,#111827_50%,#030712_100%)]">
       <div className="text-center mb-12">
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
           {kat.naziv}

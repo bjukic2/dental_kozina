@@ -8,7 +8,7 @@ export default function HomePage() {
   return (
     <main className="flex flex-col bg-black text-white">
       {/* HERO SECTION */}
-      <section className="relative w-full bg-gradient-to-b from-gray-950 via-gray-900 to-gray-900 py-24 px-6 md:py-32 md:px-12">
+      <section className="relative w-full bg-linear-to-b from-gray-950 via-gray-900 to-gray-900 py-24 px-6 md:py-32 md:px-12">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6 text-gray-300">
@@ -41,7 +41,7 @@ export default function HomePage() {
       </section>
 
       {/* SERVICES */}
-      <section className="py-24 px-6 md:px-12 bg-gradient-to-b from-gray-900 to-gray-950 text-white">
+      <section className="py-24 px-6 md:px-12 bg-linear-to-b from-gray-900 to-gray-950 text-white">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4">
             Naše usluge
@@ -59,7 +59,7 @@ export default function HomePage() {
             ].map((service, index) => (
               <div
                 key={index}
-                className="bg-gray-800 border border-gray-700 rounded-2xl p-6 sm:p-8 text-center shadow-sm hover:shadow-lg transition"
+                className="bg-gray-700 border border-gray-700 rounded-2xl p-6 sm:p-8 text-center shadow-sm hover:shadow-lg transition"
               >
                 <div className="text-4xl mb-4">{service.icon}</div>
                 <h3 className="text-lg sm:text-xl font-semibold mb-3">
@@ -75,7 +75,7 @@ export default function HomePage() {
       </section>
 
       {/* WHY US */}
-      <section className="py-24 px-6 md:px-12 bg-gradient-to-b from-gray-950 to-gray-900 text-white">
+      <section className="py-24 px-6 md:px-12 bg-linear-to-b from-gray-950 to-gray-900 text-white">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div className="w-full h-64 sm:h-80 md:h-full relative">
             <Image
@@ -129,7 +129,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 px-6 md:px-12 bg-gradient-to-t from-gray-950 to-gray-900 text-white text-center">
+      <section className="py-24 px-6 md:px-12 bg-linear-to-t from-gray-950 via-gray-900 to-gray-900 text-white text-center">
         <h2 className="text-3xl sm:text-4xl font-bold mb-6">
           Rezervirajte svoj termin već danas
         </h2>

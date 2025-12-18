@@ -63,11 +63,11 @@ export default function KontaktForma() {
         className="hidden"
       />
 
-      <h6 className="text-lg font-semibold text-gray-800">Pošaljite poruku</h6>
+      <h6 className="text-lg font-semibold text-gray-200">Pošaljite poruku</h6>
 
       {/* Ime */}
       <div className="flex flex-col">
-        <label htmlFor="ime" className="text-sm font-medium text-gray-600">
+        <label htmlFor="ime" className="text-sm font-medium text-gray-300">
           Ime i prezime
         </label>
         <input
@@ -75,13 +75,13 @@ export default function KontaktForma() {
           id="ime"
           name="ime"
           required
-          className="mt-1 rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="mt-1 rounded-lg border border-gray-400 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
 
       {/* Email */}
       <div className="flex flex-col">
-        <label htmlFor="email" className="text-sm font-medium text-gray-600">
+        <label htmlFor="email" className="text-sm font-medium text-gray-300">
           Email adresa
         </label>
         <input
@@ -89,13 +89,13 @@ export default function KontaktForma() {
           id="email"
           name="email"
           required
-          className="mt-1 rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="mt-1 rounded-lg border border-gray-400 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
 
       {/* Poruka */}
       <div className="flex flex-col">
-        <label htmlFor="poruka" className="text-sm font-medium text-gray-600">
+        <label htmlFor="poruka" className="text-sm font-medium text-gray-300">
           Poruka
         </label>
         <textarea
@@ -103,13 +103,13 @@ export default function KontaktForma() {
           name="poruka"
           rows={4}
           required
-          className="mt-1 rounded-lg border border-gray-300 px-3 py-2 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="mt-1 rounded-lg border border-gray-400 px-3 py-2 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
 
       {/* Ortopan – Drag & Drop */}
       <div className="flex flex-col">
-        <label className="text-sm font-medium text-gray-600 mb-1">
+        <label className="text-sm font-medium text-gray-300 mb-1">
           Ortopan (po želji)
         </label>
 
@@ -119,11 +119,11 @@ export default function KontaktForma() {
           onClick={() => fileInputRef.current?.click()}
           className="flex cursor-pointer flex-col items-center justify-center
                      rounded-xl border-2 border-dashed border-gray-300
-                     bg-gray-50 px-4 py-6 text-center
-                     hover:border-blue-500 hover:bg-blue-50
+                     bg-gray-700 px-4 py-6 text-center
+                     hover:border-blue-500 hover:bg-gray-400
                      transition-colors"
         >
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-gray-300">
             {fileName ? (
               <>
                 Odabrana datoteka:
@@ -134,14 +134,14 @@ export default function KontaktForma() {
             ) : (
               <>
                 Povucite ortopan ovdje ili{" "}
-                <span className="font-semibold text-blue-600">
+                <span className="font-semibold text-blue-400">
                   kliknite za odabir
                 </span>
               </>
             )}
           </p>
 
-          <p className="mt-2 text-xs text-gray-500">
+          <p className="mt-2 text-xs text-gray-400">
             JPG, PNG ili PDF • max 5 MB
           </p>
         </div>
@@ -161,7 +161,7 @@ export default function KontaktForma() {
       {/* Submit */}
       <button
         type="submit"
-        className="w-full rounded-xl bg-blue-600 px-4 py-2 font-semibold text-white
+        className="w-full rounded-xl bg-blue-400 px-4 py-2 font-semibold text-white
                    hover:bg-blue-700 transition-colors hover: cursor-pointer"
       >
         Pošalji

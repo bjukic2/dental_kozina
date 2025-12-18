@@ -85,7 +85,7 @@ export default function Navbar() {
         {menuOpen && (
           <>
             <motion.div
-              className="fixed inset-0 bg-blue-400 z-40"
+              className="fixed inset-0 bg-gray-950 z-40"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}

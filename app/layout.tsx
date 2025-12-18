@@ -17,7 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="flex min-h-screen flex-col">
         <Navbar />
-        <main className="flex-grow pt-16">
+        <main className="grow">
           <CustomSessionProvider>{children}</CustomSessionProvider>
         </main>
         <Footer />
