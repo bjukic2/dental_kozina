@@ -6,10 +6,10 @@ import ScrollToTopButton from "@/components/ScrollToTopButton";
 
 export default function HomePage() {
   return (
-    <main className="flex flex-col bg-black text-white pt-20">
+    <main className="flex flex-col bg-black text-white">
       {/* HERO SECTION */}
       <section className="relative w-full bg-linear-to-b from-gray-950 via-gray-900 to-gray-900 py-24 px-6 md:py-32 md:px-12">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6 text-gray-300">
               Aesthetic Dental Kozina <br />
@@ -28,7 +28,7 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="relative w-full h-64 sm:h-80 md:h-full">
+          <div className="relative w-full aspect-4/3 sm:aspect-5/4 lg:h-full">
             <Image
               src="/images/dental.jpg"
               alt="Dental clinic"

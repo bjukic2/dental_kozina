@@ -16,9 +16,8 @@ export default async function UslugaPage({ params }: Props) {
   if (!service) return notFound();
 
   return (
-    <div className="flex flex-col min-h-[calc(100vh-64px)] bg-linear-to-b from-gray-950 via-gray-900 to-gray-950">
-      {/* Container */}
-      <div className="grow max-w-5xl mx-auto px-6 py-16 md:py-20">
+    <div className="px-6 py-20 bg-linear-to-b from-gray-950 via-gray-900 to-gray-950">
+      <div className="max-w-5xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
           {/* Slika */}
           <div className="relative w-full h-64 sm:h-80 md:h-[400px] rounded-2xl shadow-md overflow-hidden bg-gray-100">
@@ -42,13 +41,16 @@ export default async function UslugaPage({ params }: Props) {
             <h1 className="text-3xl md:text-4xl font-bold text-gray-300">
               {service.naziv}
             </h1>
+
             <p className="text-gray-400">
               Kategorija:{" "}
               <span className="font-semibold text-gray-200">
                 {service.kategorija.naziv}
               </span>
             </p>
+
             <p className="text-gray-300 leading-relaxed">{service.opis}</p>
+
             <p className="text-xl font-semibold mt-4">
               Cijena:{" "}
               {service.cijena !== null ? (

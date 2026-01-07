@@ -19,37 +19,49 @@ export default function AdminPage() {
   }, [session, status, router]);
 
   if (status === "loading") {
-    return <p className="p-6">Učitavanje...</p>;
+    return (
+      <div className="px-6 py-20 bg-linear-to-b from-gray-950 via-gray-900 to-gray-950 flex items-center justify-center">
+        <p className="text-center text-gray-300">Učitavanje...</p>
+      </div>
+    );
   }
 
   return (
-    <div className="max-w-2xl mx-auto px-6 py-20">
-      <h1 className="text-4xl font-bold mb-10 text-center">Admin Panel</h1>
+    <div className="px-6 bg-linear-to-b from-gray-950 via-gray-900 to-gray-950 min-h-screen py-60">
+      <div className="max-w-3xl mx-auto">
+        <h1 className="text-4xl font-bold mb-12 text-center text-gray-200">
+          Admin Panel
+        </h1>
 
-      <div className="flex justify-center gap-4 mb-12">
-        <Link
-          href="/admin/poruke"
-          className={`px-6 py-3 rounded-xl shadow transition font-medium border
-            ${
-              pathname === "/admin/poruke"
-                ? "bg-blue-600 text-white border-blue-700 scale-105"
-                : "bg-white text-blue-700 border-blue-300 hover:bg-blue-50"
-            }`}
-        >
-          Poruke
-        </Link>
+        <div className="flex justify-center gap-6 mb-16">
+          <Link
+            href="/admin/poruke"
+            className={`px-6 py-3 rounded-xl shadow transition font-medium border text-lg
+              ${
+                pathname === "/admin/poruke"
+                  ? "bg-blue-600 text-white border-blue-700 scale-105"
+                  : "bg-gray-800 text-blue-300 border-gray-700 hover:bg-gray-700"
+              }`}
+          >
+            Poruke
+          </Link>
 
-        <Link
-          href="/admin/usporedbe"
-          className={`px-6 py-3 rounded-xl shadow transition font-medium border
-            ${
-              pathname === "/admin/usporedbe"
-                ? "bg-green-600 text-white border-green-700 scale-105"
-                : "bg-white text-green-700 border-green-300 hover:bg-green-50"
-            }`}
-        >
-          Usporedbe
-        </Link>
+          <Link
+            href="/admin/usporedbe"
+            className={`px-6 py-3 rounded-xl shadow transition font-medium border text-lg
+              ${
+                pathname === "/admin/usporedbe"
+                  ? "bg-green-600 text-white border-green-700 scale-105"
+                  : "bg-gray-800 text-green-300 border-gray-700 hover:bg-gray-700"
+              }`}
+          >
+            Usporedbe
+          </Link>
+        </div>
+
+        <p className="text-center text-gray-400">
+          Odaberite kategoriju za upravljanje sadržajem.
+        </p>
       </div>
     </div>
   );

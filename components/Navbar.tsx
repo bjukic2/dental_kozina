@@ -34,7 +34,11 @@ export default function Navbar() {
 
             {/* MOBILE BUTTON */}
             <div className="lg:hidden">
-              <button onClick={toggleMenu} aria-label="Toggle Menu">
+              <button
+                onClick={toggleMenu}
+                aria-label="Toggle Menu"
+                className="cursor-pointer"
+              >
                 {menuOpen ? <X size={28} /> : <Menu size={28} />}
               </button>
             </div>
@@ -101,7 +105,7 @@ export default function Navbar() {
             >
               <div className="flex justify-between items-center mb-6">
                 <h3 className="text-lg font-semibold">Navigacija</h3>
-                <button onClick={toggleMenu}>
+                <button onClick={toggleMenu} className="cursor-pointer">
                   <X size={24} />
                 </button>
               </div>
@@ -135,7 +139,7 @@ export default function Navbar() {
               </ul>
 
               <button
-                className="mt-6 border border-white text-white px-4 py-2 rounded-full hover:bg-white hover:text-gray-800 transition w-full"
+                className="mt-6 border border-white text-white px-4 py-2 rounded-full hover:bg-white hover:text-gray-800 transition w-full cursor-pointer"
                 onClick={toggleMenu}
               >
                 PRVI PREGLED

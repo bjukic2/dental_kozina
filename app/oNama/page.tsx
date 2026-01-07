@@ -6,18 +6,21 @@ import ScrollToTopButton from "@/components/ScrollToTopButton";
 
 export default function ONamaPage() {
   return (
-    <main className="pt-20 bg-black text-white">
+    <main className=" bg-black text-white">
       {/* UVOD */}
-      <section className="bg-linear-to-b from-gray-950 to-gray-900 max-w-5xl mx-auto px-6 py-24 text-center">
-        <h1 className="text-4xl sm:text-5xl font-bold mb-6 text-gray-300">
-          O našoj ordinaciji
-        </h1>
-        <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-          Naša stomatološka ordinacija posvećena je pružanju suvremene, sigurne
-          i kvalitetne dentalne skrbi uz individualan pristup svakom pacijentu.
-          Koristimo modernu tehnologiju i provjerene metode liječenja kako bismo
-          osigurali dugoročna i estetski prihvatljiva rješenja.
-        </p>
+      <section className="bg-linear-to-b from-gray-950 to-gray-900 px-6 py-24">
+        <div className="max-w-5xl mx-auto text-center">
+          <h1 className="text-4xl sm:text-5xl font-bold mb-6 text-gray-300">
+            O našoj ordinaciji
+          </h1>
+          <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            Naša stomatološka ordinacija posvećena je pružanju suvremene,
+            sigurne i kvalitetne dentalne skrbi uz individualan pristup svakom
+            pacijentu. Koristimo modernu tehnologiju i provjerene metode
+            liječenja kako bismo osigurali dugoročna i estetski prihvatljiva
+            rješenja.
+          </p>
+        </div>
       </section>
 
       {/* OSOBA 1 */}
