@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Toast from "@/components/Toast";
 import DeleteConfirm from "@/components/DeleteConfirm";
+import { usporedba } from "@prisma/client";
 
 export default function UsporedbeAdmin() {
   const { data: session, status } = useSession();
@@ -96,7 +97,7 @@ export default function UsporedbeAdmin() {
     setLoading(false);
   };
 
-  const [usporedbe, setUsporedbe] = useState<any[]>([]);
+  const [usporedbe, setUsporedbe] = useState<usporedba[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
