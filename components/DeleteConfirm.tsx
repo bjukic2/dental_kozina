@@ -23,7 +23,7 @@ export default function DeleteConfirm({
         <div className="flex justify-end gap-3">
           <button
             onClick={onClose}
-            className="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300"
+            className="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300 cursor-pointer"
           >
             Odustani
           </button>
@@ -33,7 +33,7 @@ export default function DeleteConfirm({
               onConfirm();
               onClose();
             }}
-            className="px-4 py-2 rounded bg-red-600 text-white hover:bg-red-700"
+            className="px-4 py-2 rounded bg-red-600 text-white hover:bg-red-700 cursor-pointer"
           >
             Obriši
           </button>
