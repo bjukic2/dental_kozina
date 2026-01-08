@@ -20,14 +20,14 @@ export default function AdminPage() {
 
   if (status === "loading") {
     return (
-      <div className="px-6 py-20 bg-linear-to-b from-gray-950 via-gray-900 to-gray-950 flex items-center justify-center">
+      <div className="px-6 py-20 bg-[linear-gradient(to_bottom,#030712_0%,#111827_50%,#030712_100%)] flex items-center justify-center">
         <p className="text-center text-gray-300">Učitavanje...</p>
       </div>
     );
   }
 
   return (
-    <div className="px-6 bg-linear-to-b from-gray-950 via-gray-900 to-gray-950 min-h-screen py-60">
+    <div className="px-6 bg-[linear-gradient(to_bottom,#030712_0%,#111827_50%,#030712_100%)] min-h-screen py-60">
       <div className="max-w-3xl mx-auto">
         <h1 className="text-4xl font-bold mb-12 text-center text-gray-200">
           Admin Panel

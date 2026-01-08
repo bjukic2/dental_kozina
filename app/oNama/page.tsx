@@ -8,7 +8,10 @@ export default function ONamaPage() {
   return (
     <main className=" bg-black text-white">
       {/* UVOD */}
-      <section className="bg-linear-to-b from-gray-950 to-gray-900 px-6 py-24">
+      <section
+        className="bg-[linear-gradient(to_bottom,#030712_0%,#111827_100%)]
+ px-6 py-24"
+      >
         <div className="max-w-5xl mx-auto text-center">
           <h1 className="text-4xl sm:text-5xl font-bold mb-6 text-gray-300">
             O našoj ordinaciji
@@ -24,7 +27,10 @@ export default function ONamaPage() {
       </section>
 
       {/* OSOBA 1 */}
-      <section className="bg-linear-to-b from-gray-900 to-gray-950 py-24 px-6 md:px-12 bg-black">
+      <section
+        className="bg-[linear-gradient(to_bottom,#111827_0%,#030712_100%)]
+ py-24 px-6 md:px-12 bg-black"
+      >
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="w-full h-64 sm:h-80 md:h-full relative">
             <Image
@@ -78,7 +84,10 @@ export default function ONamaPage() {
       </section>
 
       {/* OSOBA 3 */}
-      <section className="bg-linear-to-t from-gray-900 to-gray-950 py-24 px-6 md:px-12 bg-black">
+      <section
+        className="bg-[linear-gradient(to_bottom,#030712_0%,#111827_100%)]
+ py-24 px-6 md:px-12 bg-black"
+      >
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="w-full h-64 sm:h-80 md:h-full relative">
             <Image
@@ -103,7 +112,10 @@ export default function ONamaPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-linear-to-t from-gray-950 to-gray-900 py-24 px-6 md:px-12 bg-gray-900 text-center">
+      <section
+        className="bg-[linear-gradient(to_bottom,#111827_0%,#030712_100%)]
+ py-24 px-6 md:px-12 bg-gray-900 text-center"
+      >
         <h2 className="text-3xl sm:text-4xl font-bold mb-6">
           Rezervirajte svoj termin već danas
         </h2>

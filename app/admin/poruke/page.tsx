@@ -69,7 +69,7 @@ export default function AdminPoruke() {
   };
 
   return (
-    <div className="px-6 py-20 bg-linear-to-b from-gray-950 via-gray-900 to-gray-950 min-h-screen">
+    <div className="px-6 py-20 bg-[linear-gradient(to_bottom,#030712_0%,#111827_50%,#030712_100%)] min-h-screen">
       <div className="max-w-4xl mx-auto space-y-10">
         {/* Back link */}
         <Link
