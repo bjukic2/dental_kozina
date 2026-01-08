@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Toast from "@/components/Toast";
+import DeleteConfirm from "@/components/DeleteConfirm";
 
 export default function UsporedbeAdmin() {
   const { data: session, status } = useSession();
@@ -20,6 +21,8 @@ export default function UsporedbeAdmin() {
     }
   }, [session, status, router]);
 
+  const [deleteOpen, setDeleteOpen] = useState(false);
+  const [deleteId, setDeleteId] = useState<number | null>(null);
   const [naziv, setNaziv] = useState("");
   const [opis, setOpis] = useState("");
   const [beforeImage, setBeforeImage] = useState<File | null>(null);
@@ -91,6 +94,32 @@ export default function UsporedbeAdmin() {
     }
 
     setLoading(false);
+  };
+
+  const [usporedbe, setUsporedbe] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch("/api/admin/usporedbe");
+      const data = await res.json();
+      setUsporedbe(data);
+    };
+
+    fetchData();
+  }, []);
+
+  const handleDelete = async () => {
+    if (!deleteId) return;
+    const res = await fetch(`/api/admin/usporedbe/${deleteId}`, {
+      method: "DELETE",
+    });
+    if (res.ok) {
+      setUsporedbe((prev) => prev.filter((u) => u.id !== deleteId));
+      setToast({ message: "Uspješno izbrisano!", type: "success" });
+    } else {
+      setToast({ message: "Greška pri brisanju.", type: "error" });
+    }
+    setDeleteId(null);
   };
 
   return (
@@ -233,12 +262,45 @@ export default function UsporedbeAdmin() {
           <button
             onClick={handleUpload}
             disabled={loading}
-            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition shadow"
+            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition shadow cursor-pointer"
           >
             {loading ? "Učitavam..." : "Učitaj slike"}
           </button>
         </div>
 
+        <div className="bg-gray-800 border border-gray-700 p-6 rounded-xl shadow space-y-5">
+          <h2 className="text-xl font-semibold text-gray-200">
+            Postojeće usporedbe
+          </h2>
+
+          {usporedbe.length === 0 && (
+            <p className="text-gray-400">Nema dodanih usporedbi.</p>
+          )}
+
+          <div className="space-y-4">
+            {usporedbe.map((u) => (
+              <div
+                key={u.id}
+                className="flex items-center justify-between bg-gray-900 p-3 rounded-lg border border-gray-700"
+              >
+                <div>
+                  <p className="text-gray-200 font-semibold">{u.naziv}</p>
+                  <p className="text-gray-400 text-sm">{u.opis}</p>
+                </div>
+
+                <button
+                  onClick={() => {
+                    setDeleteId(u.id);
+                    setDeleteOpen(true);
+                  }}
+                  className="px-3 py-1 bg-red-600 hover:bg-red-700 text-white rounded-lg text-sm cursor-pointer"
+                >
+                  Izbriši
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
         {/* Toast */}
         {toast && (
           <Toast
@@ -248,6 +310,11 @@ export default function UsporedbeAdmin() {
           />
         )}
       </div>
+      <DeleteConfirm
+        open={deleteOpen}
+        onClose={() => setDeleteOpen(false)}
+        onConfirm={handleDelete}
+      />
     </div>
   );
 }
