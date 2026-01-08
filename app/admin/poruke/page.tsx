@@ -108,7 +108,7 @@ export default function AdminPoruke() {
               type="date"
               value={od}
               onChange={(e) => setOd(e.target.value)}
-              className="rounded p-2 bg-gray-900 border border-gray-700 text-gray-200"
+              className="rounded p-2 bg-gray-900 border border-gray-700 text-gray-200 cursor-pointer"
             />
           </div>
 
@@ -120,13 +120,13 @@ export default function AdminPoruke() {
               type="date"
               value={doDatuma}
               onChange={(e) => setDoDatuma(e.target.value)}
-              className="rounded p-2 bg-gray-900 border border-gray-700 text-gray-200"
+              className="rounded p-2 bg-gray-900 border border-gray-700 text-gray-200 cursor-pointer"
             />
           </div>
 
           <button
             type="submit"
-            className="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 shadow"
+            className="bg-blue-500 text-white px-5 py-2 rounded-lg hover:bg-blue-600 shadow cursor-pointer"
           >
             Filtriraj
           </button>
@@ -176,7 +176,7 @@ export default function AdminPoruke() {
                       setSelectedId(p.id);
                       setModalOpen(true);
                     }}
-                    className="bg-red-600 text-white px-4 py-1.5 rounded hover:bg-red-700 shadow"
+                    className="bg-red-600 text-white px-4 py-1.5 rounded hover:bg-red-700 shadow cursor-pointer"
                   >
                     Obriši
                   </button>
