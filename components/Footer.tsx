@@ -6,17 +6,16 @@ import { Facebook, Instagram, Phone, Mail, MapPin } from "lucide-react";
 export default function Footer() {
   return (
     <footer className="bg-gray-950 text-white py-8 px-4">
-      {/* LOGO */}
-      <div className="flex justify-center mb-4">
-        <Link href="/">
-          <Image src={logo} alt="logo" width={210} height={90} />
-        </Link>
-      </div>
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
+        {/* LOGO */}
+        <div className="flex justify-center mb-4">
+          <Link href="/">
+            <Image src={logo} alt="logo" width={210} height={90} />
+          </Link>
+        </div>
 
-      {/* KONTEJNER KOJI CENTRIRA SVE */}
-      <div className="flex justify-center">
-        {/* WRAPPER KOJI DEFINIRA ŠIRINU TRI NASLOVA */}
-        <div className="inline-block">
+        {/* KONTEJNER KOJI CENTRIRA SVE */}
+        <div className="max-w-7xl mx-auto">
           {/* CRTA ISPOD LOGA */}
           <div className="h-0.5 bg-gray-500 mx-auto mb-10 w-full"></div>
 

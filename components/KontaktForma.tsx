@@ -63,10 +63,12 @@ export default function KontaktForma() {
         className="hidden"
       />
 
-      <h6 className="text-lg font-semibold text-gray-200">Pošaljite poruku</h6>
+      <h6 className="text-lg font-semibold text-blue-300 flex items-center justify-center">
+        Pošaljite poruku
+      </h6>
 
       {/* Ime */}
-      <div className="flex flex-col">
+      <div className="flex flex-col max-w-xl w-full mx-auto">
         <label htmlFor="ime" className="text-sm font-medium text-gray-300">
           Ime i prezime
         </label>
@@ -75,12 +77,13 @@ export default function KontaktForma() {
           id="ime"
           name="ime"
           required
-          className="mt-1 rounded-lg border border-gray-400 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="mt-1 rounded-lg border border-gray-400 px-3 py-2 text-white
+                 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
 
       {/* Email */}
-      <div className="flex flex-col">
+      <div className="flex flex-col max-w-xl w-full mx-auto">
         <label htmlFor="email" className="text-sm font-medium text-gray-300">
           Email adresa
         </label>
@@ -89,26 +92,28 @@ export default function KontaktForma() {
           id="email"
           name="email"
           required
-          className="mt-1 rounded-lg border border-gray-400 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="mt-1 rounded-lg border border-gray-400 px-3 py-2 text-white
+                 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
 
       {/* Poruka */}
-      <div className="flex flex-col">
+      <div className="flex flex-col max-w-xl w-full mx-auto">
         <label htmlFor="poruka" className="text-sm font-medium text-gray-300">
           Poruka
         </label>
         <textarea
           id="poruka"
           name="poruka"
-          rows={4}
+          rows={6}
           required
-          className="mt-1 rounded-lg border border-gray-400 px-3 py-2 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="mt-1 rounded-lg border border-gray-400 px-3 py-2 resize-none text-white
+                 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
 
-      {/* Ortopan – Drag & Drop */}
-      <div className="flex flex-col">
+      {/* Ortopan ispod poruke */}
+      <div className="flex flex-col max-w-xl w-full mx-auto">
         <label className="text-sm font-medium text-gray-300 mb-1">
           Ortopan (po želji)
         </label>
@@ -118,10 +123,10 @@ export default function KontaktForma() {
           onDrop={handleDrop}
           onClick={() => fileInputRef.current?.click()}
           className="flex cursor-pointer flex-col items-center justify-center
-                     rounded-xl border-2 border-dashed border-gray-300
-                     bg-gray-700 px-4 py-6 text-center
-                     hover:border-blue-500 hover:bg-gray-400
-                     transition-colors"
+                 rounded-xl border-2 border-dashed border-gray-300
+                 bg-gray-700 px-4 py-6 text-center
+                 hover:border-blue-300 hover:bg-gray-600
+                 transition-colors"
         >
           <p className="text-sm text-gray-300">
             {fileName ? (
@@ -146,7 +151,6 @@ export default function KontaktForma() {
           </p>
         </div>
 
-        {/* Pravi file input (skriven) */}
         <input
           ref={fileInputRef}
           type="file"
@@ -161,8 +165,8 @@ export default function KontaktForma() {
       {/* Submit */}
       <button
         type="submit"
-        className="w-full rounded-xl bg-blue-400 px-4 py-2 font-semibold text-white
-                   hover:bg-blue-700 transition-colors hover: cursor-pointer"
+        className="rounded-xl bg-blue-400 px-4 py-2 font-semibold text-gray-200
+               hover:bg-blue-500 transition-colors hover: cursor-pointer max-w-xl w-full mx-auto flex items-center justify-center"
       >
         Pošalji
       </button>

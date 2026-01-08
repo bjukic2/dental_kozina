@@ -23,61 +23,57 @@ export default function Kontakt() {
           </p>
         </div>
 
-        {/* Kontakt kartice + forma */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-16 mt-16">
-          {/* Lijevi dio */}
-          <div className="space-y-10">
-            {/* Radno vrijeme */}
-            <div className="p-6 rounded-2xl bg-gray-700 shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
-              <h6 className="text-lg font-semibold text-gray-700">
-                Radno vrijeme
-              </h6>
-              <h5 className="text-2xl font-bold text-gray-300 mt-2">
-                Pon – Pet 08:00 – 19:00
-              </h5>
-              <p className="text-gray-400 mt-3">
-                Za sve informacije možete nas kontaktirati putem telefona ili
-                emaila.
-              </p>
-            </div>
-
-            {/* Kontakt info */}
-            <div className="p-6 rounded-2xl bg-gray-700 shadow-[0_10px_30px_rgba(0,0,0,0.06)] space-y-5">
-              <h6 className="text-lg font-semibold text-gray-300">
-                Kontakt podaci
-              </h6>
-
-              <div className="flex items-center gap-3 text-gray-800">
-                <Image src={location} alt="Lokacija" width={26} height={26} />
-                <span className="text-lg text-gray-400">{adresa_text}</span>
-              </div>
-
-              <a
-                href={`tel:${mobitel}`}
-                className="flex items-center gap-3 text-gray-800 hover:text-blue-600 transition-colors text-lg"
-              >
-                <Image src={telephone} alt="Telefon" width={26} height={26} />
-                <span className="text-gray-400">{mobitel}</span>
-              </a>
-
-              <a
-                href={`mailto:${email}`}
-                className="flex items-center gap-3 text-gray-800 hover:text-blue-600 transition-colors text-lg"
-              >
-                <Image src={mail} alt="Email" width={26} height={26} />
-                <span className="text-gray-400">{email}</span>
-              </a>
-            </div>
+        {/* PRVI RED: Radno vrijeme + Kontakt podaci */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-16 max-w-3xl mx-auto">
+          {/* Radno vrijeme */}
+          <div className="p-6 rounded-2xl bg-gray-700 shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
+            <h6 className="text-lg font-semibold text-blue-300 flex items-center justify-center">
+              Radno vrijeme
+            </h6>
+            <h5 className="text-2xl font-bold text-gray-300 mt-2 flex items-center justify-center">
+              Pon – Pet 08:00 – 19:00
+            </h5>
+            <p className="text-gray-400 mt-3">
+              Za sve informacije možete nas kontaktirati putem telefona ili
+              emaila.
+            </p>
           </div>
 
-          {/* Kontakt forma */}
-          <div className="p-8 bg-gray-700 rounded-2xl shadow-[0_15px_40px_rgba(0,0,0,0.08)]">
-            <KontaktForma />
+          {/* Kontakt podaci */}
+          <div className="p-6 rounded-2xl bg-gray-700 shadow-[0_10px_30px_rgba(0,0,0,0.06)] space-y-5">
+            <h6 className="text-lg font-semibold text-blue-300 flex items-center justify-center">
+              Kontakt podaci
+            </h6>
+
+            <div className="flex items-center gap-3">
+              <Image src={location} alt="Lokacija" width={26} height={26} />
+              <span className="text-lg text-gray-400">{adresa_text}</span>
+            </div>
+
+            <a
+              href={`tel:${mobitel}`}
+              className="flex items-center gap-3 hover:text-blue-600 transition-colors text-lg"
+            >
+              <Image src={telephone} alt="Telefon" width={26} height={26} />
+              <span className="text-gray-400">{mobitel}</span>
+            </a>
+
+            <a
+              href={`mailto:${email}`}
+              className="flex items-center gap-3 hover:text-blue-600 transition-colors text-lg"
+            >
+              <Image src={mail} alt="Email" width={26} height={26} />
+              <span className="text-gray-400">{email}</span>
+            </a>
           </div>
+        </div>
+        <div className="mt-10 p-10 bg-gray-700 rounded-2xl shadow-[0_15px_40px_rgba(0,0,0,0.08)] max-w-3xl mx-auto">
+          {" "}
+          <KontaktForma />{" "}
         </div>
 
         {/* Mapa */}
-        <div className="space-y-4 mt-20">
+        <div className="space-y-4 mt-20 max-w-3xl mx-auto">
           <h3 className="text-xl font-bold text-gray-400">Lokacija</h3>
           <div className="w-full h-64 md:h-72 rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
             <iframe
