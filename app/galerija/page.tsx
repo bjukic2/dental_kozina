@@ -17,7 +17,7 @@ export default async function GalerijaPage() {
 "
     >
       <div className="flex flex-col justify-center items-center min-h-[calc(100vh-5rem)]">
-        <h1 className="text-3xl font-bold mb-8 text-center max-w-5xl mx-auto text-white">
+        <h1 className="text-3xl font-bold mb-8 text-center max-w-5xl mx-auto text-blue-300">
           Galerija osmijeha
         </h1>
 

@@ -82,7 +82,8 @@ export default function Footer() {
 
       {/* COPYRIGHT */}
       <div className="text-center mt-10 text-sm text-gray-400">
-        © {new Date().getFullYear()} Dental Kozina. Sva prava pridržana.
+        © {new Date().getFullYear()} Aesthetic dental Kozina. Sva prava
+        pridržana.
       </div>
     </footer>
   );

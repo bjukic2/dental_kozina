@@ -15,7 +15,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6 text-gray-300">
-              Aesthetic Dental Kozina <br />
+              Aesthetic dental Kozina <br />
               <span className="text-blue-300">
                 Centar moderne stomatologije
               </span>
@@ -25,7 +25,7 @@ export default function HomePage() {
               tehnologiju. Vaš osmijeh je naša odgovornost.
             </p>
             <Link href="/kontakt">
-              <button className="bg-gray-800 text-gray-300 px-8 py-4 rounded-xl font-semibold hover:bg-blue-700 transition shadow-lg">
+              <button className="bg-gray-800 text-gray-300 px-8 py-4 rounded-xl font-semibold hover:bg-blue-300 hover:text-gray-800 transition shadow-lg cursor-pointer">
                 Dogovorite termin
               </button>
             </Link>
@@ -49,7 +49,7 @@ export default function HomePage() {
  text-white"
       >
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4 text-blue-300">
             Naše usluge
           </h2>
           <p className="text-gray-300 text-center mb-16 max-w-2xl mx-auto">
@@ -97,7 +97,7 @@ export default function HomePage() {
           </div>
 
           <div>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-blue-300">
               Zašto odabrati našu ordinaciju?
             </h2>
             <ul className="space-y-4 text-gray-300 text-sm sm:text-base">
@@ -112,7 +112,7 @@ export default function HomePage() {
 
       {/* GALLERY / NAŠA OPREMA */}
       <section className="py-24 px-6 md:px-12  bg-gray-900 text-white text-center">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-8">
+        <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-blue-300">
           Naša ordinacija i oprema
         </h2>
         <p className="text-gray-300 mb-12 max-w-2xl mx-auto">
@@ -142,14 +142,14 @@ export default function HomePage() {
         className="py-24 px-6 md:px-12 bg-[linear-gradient(to_bottom,#111827_0%,#030712_100%)]
  to-gray-900 text-white text-center"
       >
-        <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+        <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-blue-300">
           Rezervirajte svoj termin već danas
         </h2>
         <p className="text-blue-100 mb-8 max-w-xl mx-auto text-sm sm:text-base">
           Naš tim stoji vam na raspolaganju za sva pitanja i konzultacije.
         </p>
         <Link href="/kontakt">
-          <button className="bg-blue-200 text-gray-900 px-10 py-4 rounded-xl font-semibold hover:bg-blue-300 transition shadow-md hover:cursor-pointer">
+          <button className="bg-gray-800 text-gray-300 px-10 py-4 rounded-xl font-semibold hover:bg-blue-300 hover:text-gray-800 transition shadow-md hover:cursor-pointer">
             Kontaktirajte nas
           </button>
         </Link>

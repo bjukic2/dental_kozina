@@ -75,7 +75,7 @@ export default function Navbar() {
             {/* DESKTOP CTA */}
             <div className="hidden lg:block">
               <Link href="/kontakt" className="cursor-pointer">
-                <button className="border border-white px-4 py-2 rounded-full hover:bg-white hover:text-gray-800 transition cursor-pointer">
+                <button className="border border-white px-4 py-2 rounded-full hover:bg-blue-300 hover:text-gray-800 transition cursor-pointer">
                   PRVI PREGLED
                 </button>
               </Link>
@@ -139,7 +139,7 @@ export default function Navbar() {
               </ul>
 
               <button
-                className="mt-6 border border-white text-white px-4 py-2 rounded-full hover:bg-white hover:text-gray-800 transition w-full cursor-pointer"
+                className="mt-6 border border-white text-white px-4 py-2 rounded-full hover:bg-blue-300 hover:text-gray-800 transition w-full cursor-pointer"
                 onClick={toggleMenu}
               >
                 PRVI PREGLED

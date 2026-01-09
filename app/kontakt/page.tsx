@@ -26,7 +26,7 @@ export default function Kontakt() {
         {/* PRVI RED: Radno vrijeme + Kontakt podaci */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-16 max-w-3xl mx-auto">
           {/* Radno vrijeme */}
-          <div className="p-6 rounded-2xl bg-gray-700 shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
+          <div className="p-6 rounded-2xl bg-gray-800 shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
             <h6 className="text-lg font-semibold text-blue-300 flex items-center justify-center">
               Radno vrijeme
             </h6>
@@ -40,7 +40,7 @@ export default function Kontakt() {
           </div>
 
           {/* Kontakt podaci */}
-          <div className="p-6 rounded-2xl bg-gray-700 shadow-[0_10px_30px_rgba(0,0,0,0.06)] space-y-5">
+          <div className="p-6 rounded-2xl bg-gray-800 shadow-[0_10px_30px_rgba(0,0,0,0.06)] space-y-5">
             <h6 className="text-lg font-semibold text-blue-300 flex items-center justify-center">
               Kontakt podaci
             </h6>
@@ -67,7 +67,7 @@ export default function Kontakt() {
             </a>
           </div>
         </div>
-        <div className="mt-10 p-10 bg-gray-700 rounded-2xl shadow-[0_15px_40px_rgba(0,0,0,0.08)] max-w-3xl mx-auto">
+        <div className="mt-10 p-10 bg-gray-800 rounded-2xl shadow-[0_15px_40px_rgba(0,0,0,0.08)] max-w-3xl mx-auto">
           {" "}
           <KontaktForma />{" "}
         </div>

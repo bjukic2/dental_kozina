@@ -13,7 +13,7 @@ export default function ONamaPage() {
  px-6 py-24"
       >
         <div className="max-w-5xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-6 text-gray-300">
+          <h1 className="text-4xl sm:text-5xl font-bold mb-6 text-blue-300">
             O našoj ordinaciji
           </h1>
           <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
@@ -116,14 +116,14 @@ export default function ONamaPage() {
         className="bg-[linear-gradient(to_bottom,#111827_0%,#030712_100%)]
  py-24 px-6 md:px-12 bg-gray-900 text-center"
       >
-        <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+        <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-blue-300">
           Rezervirajte svoj termin već danas
         </h2>
         <p className="text-gray-300 mb-8 max-w-xl mx-auto text-sm sm:text-base">
           Naš tim stoji vam na raspolaganju za sva pitanja i konzultacije.
         </p>
         <Link href="/kontakt">
-          <button className="bg-gray-800 text-gray-300 px-10 py-4 rounded-xl font-semibold hover:bg-blue-300 hover:text-gray-900 transition shadow-md">
+          <button className="bg-gray-800 text-gray-300 px-10 py-4 rounded-xl font-semibold hover:bg-blue-300 hover:text-gray-900 transition shadow-md cursor-pointer">
             Kontaktirajte nas
           </button>
         </Link>
