@@ -118,7 +118,7 @@ export default function Navbar() {
             {/* DESKTOP CTA */}
             <div className="hidden lg:block">
               <Link href="/kontakt">
-                <button className="border border-white px-4 py-2 rounded-full hover:bg-blue-300 hover:text-gray-800 transition">
+                <button className="border border-white px-4 py-2 rounded-full hover:bg-blue-300 hover:text-gray-800 transition cursor-pointer">
                   PRVI PREGLED
                 </button>
               </Link>
