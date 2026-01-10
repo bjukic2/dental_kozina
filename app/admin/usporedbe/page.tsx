@@ -284,11 +284,34 @@ export default function UsporedbeAdmin() {
                 key={u.id}
                 className="flex items-center justify-between bg-gray-900 p-3 rounded-lg border border-gray-700"
               >
-                <div>
-                  <p className="text-gray-200 font-semibold">{u.naziv}</p>
-                  <p className="text-gray-400 text-sm">{u.opis}</p>
+                {/* Lijevi dio: thumbnail + tekst */}
+                <div className="flex items-center gap-4">
+                  {/* Thumbnail container */}
+                  <div className="flex gap-2">
+                    <img
+                      src={u.prijeUrl}
+                      alt="Prije"
+                      className="w-16 h-16 object-cover rounded-md border border-gray-700"
+                    />
+                    <img
+                      src={u.poslijeUrl}
+                      alt="Poslije"
+                      className="w-16 h-16 object-cover rounded-md border border-gray-700"
+                    />
+                  </div>
+
+                  {/* Naziv + opis */}
+                  <div>
+                    <p className="text-gray-200 font-semibold">{u.naziv}</p>
+                    <p className="text-gray-400 text-sm">
+                      {u.opis && u.opis.length > 30
+                        ? u.opis.slice(0, 30) + "..."
+                        : u.opis}
+                    </p>
+                  </div>
                 </div>
 
+                {/* Gumb za brisanje */}
                 <button
                   onClick={() => {
                     setDeleteId(u.id);
@@ -302,6 +325,7 @@ export default function UsporedbeAdmin() {
             ))}
           </div>
         </div>
+
         {/* Toast */}
         {toast && (
           <Toast
