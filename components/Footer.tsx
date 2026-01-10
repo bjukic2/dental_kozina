@@ -59,21 +59,38 @@ export default function Footer() {
             </div>
 
             {/* KONTAKT */}
+            {/* KONTAKT */}
             <div className="flex flex-col items-center">
               <h3 className="text-lg font-semibold mb-4">Kontakt</h3>
+
               <div className="space-y-2">
-                <p className="flex items-center justify-center gap-2">
+                {/* Telefon */}
+                <a
+                  href="tel:+385991234567"
+                  className="flex items-center justify-center gap-2 hover:text-gray-300 transition-colors"
+                >
                   <Phone size={18} />
                   <span>+385 99 123 4567</span>
-                </p>
-                <p className="flex items-center justify-center gap-2">
+                </a>
+
+                {/* Email */}
+                <a
+                  href="mailto:info@ordinacija.hr"
+                  className="flex items-center justify-center gap-2 hover:text-gray-300 transition-colors"
+                >
                   <Mail size={18} />
                   <span>info@ordinacija.hr</span>
-                </p>
-                <p className="flex items-center justify-center gap-2">
+                </a>
+
+                {/* Lokacija */}
+                <a
+                  href="https://maps.google.com/?q=Domovinskog rata 35, Vedrine"
+                  target="_blank"
+                  className="flex items-center justify-center gap-2 hover:text-gray-300 transition-colors"
+                >
                   <MapPin size={18} />
-                  <span>Ulica 1, Zagreb</span>
-                </p>
+                  <span>Domovinskog rata 35</span>
+                </a>
               </div>
             </div>
           </div>
