@@ -21,6 +21,8 @@ export default async function GalerijaPage() {
           Galerija osmijeha
         </h1>
 
+        <div className="w-full max-w-5xl h-0.5 bg-gray-700 mb-12" />
+
         <div className="w-full max-w-5xl">
           <GalerijaClient usporedbe={usporedbe} />
         </div>

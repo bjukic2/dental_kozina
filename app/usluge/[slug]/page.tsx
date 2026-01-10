@@ -30,7 +30,7 @@ export default async function KategorijaPage({ params }: Props) {
             <p className="text-gray-300 text-center mb-12 leading-relaxed max-w-3xl mx-auto">
               {kategorija.opis}
             </p>
-            <div className="w-full h-px bg-gray-800 mb-12" />
+            <div className="w-full h-0.5 bg-gray-700 mb-12" />
           </>
         )}
 

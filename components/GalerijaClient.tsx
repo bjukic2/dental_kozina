@@ -18,30 +18,42 @@ interface GalerijaClientProps {
 
 export default function GalerijaClient({ usporedbe }: GalerijaClientProps) {
   const reactCompareSliderRef = useReactCompareSliderRef();
+
   return (
     <div className="grid gap-12">
-      {usporedbe.map((item) => (
-        <div key={item.id} className="space-y-4 text-center">
-          <div className="aspect-video w-full max-w-3xl mx-auto overflow-hidden rounded-xl shadow">
-            <ReactCompareSlider
-              ref={reactCompareSliderRef}
-              itemOne={
-                <ReactCompareSliderImage
-                  src={item.prijeUrl}
-                  alt="Slika prije"
-                />
-              }
-              itemTwo={
-                <ReactCompareSliderImage
-                  src={item.poslijeUrl}
-                  alt="Slika poslije"
-                />
-              }
-              onlyHandleDraggable
-            />
+      {usporedbe.map((item, i) => (
+        <div key={item.id}>
+          <div className="space-y-4 text-center">
+            <h2 className="text-xl font-semibold text-gray-200">
+              {item.naziv}
+            </h2>
+
+            <div className="aspect-video w-full max-w-3xl mx-auto overflow-hidden rounded-xl shadow">
+              <ReactCompareSlider
+                ref={reactCompareSliderRef}
+                itemOne={
+                  <ReactCompareSliderImage
+                    src={item.prijeUrl}
+                    alt="Slika prije"
+                  />
+                }
+                itemTwo={
+                  <ReactCompareSliderImage
+                    src={item.poslijeUrl}
+                    alt="Slika poslije"
+                  />
+                }
+                onlyHandleDraggable
+              />
+            </div>
+
+            {item.opis && <p className="text-gray-300">{item.opis}</p>}
           </div>
-          <h2 className="text-xl font-semibold">{item.naziv}</h2>
-          {item.opis && <p className="text-gray-600">{item.opis}</p>}
+
+          {/* Divider između usporedbi */}
+          {i !== usporedbe.length - 1 && (
+            <div className="w-full h-px bg-gray-800 my-16" />
+          )}
         </div>
       ))}
     </div>
