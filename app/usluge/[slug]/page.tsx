@@ -8,6 +8,7 @@ type Props = { params: Promise<ResolvedParams> };
 
 export default async function KategorijaPage({ params }: Props) {
   const { slug } = await params;
+
   const kategorija = await prisma.kategorija.findUnique({
     where: { slug },
     include: { usluge: true },
@@ -16,43 +17,55 @@ export default async function KategorijaPage({ params }: Props) {
   if (!kategorija) return notFound();
 
   return (
-    <main className="min-h-screen pt-20 px-4 py-16 bg-gray-950 text-white">
+    <main className="min-h-screen pt-20 px-4 py-16 bg-[linear-gradient(to_bottom,#030712_0%,#111827_50%,#030712_100%)] text-white">
       <div className="max-w-5xl mx-auto">
-        <h1 className="text-4xl font-bold mb-6">{kategorija.naziv}</h1>
+        {/* Naslov kategorije */}
+        <h1 className="text-4xl font-bold text-center text-blue-300 mb-4 uppercase">
+          {kategorija.naziv}
+        </h1>
 
+        {/* Opis kategorije */}
         {kategorija.opis && (
-          <p className="text-gray-300 mb-12 leading-relaxed">
-            {kategorija.opis}
-          </p>
+          <>
+            <p className="text-gray-300 text-center mb-12 leading-relaxed max-w-3xl mx-auto">
+              {kategorija.opis}
+            </p>
+            <div className="w-full h-px bg-gray-800 mb-12" />
+          </>
         )}
 
         <div className="space-y-24">
           {kategorija.usluge.map((u, i) => (
-            <section
-              key={u.id}
-              className={`flex flex-col md:flex-row items-center gap-10 ${
-                i % 2 === 1 ? "md:flex-row-reverse" : ""
-              }`}
-            >
-              {u.slika && (
-                <img
-                  src={u.slika}
-                  alt={u.naziv}
-                  className="w-full md:w-1/2 rounded-xl shadow-lg"
-                />
+            <div key={u.id}>
+              <section
+                className={`flex flex-col md:flex-row items-center gap-10 ${
+                  i % 2 === 1 ? "md:flex-row-reverse" : ""
+                }`}
+              >
+                <div className="w-full md:w-1/2">
+                  {/* Naziv usluge iznad slike */}
+                  <h2 className="text-3xl font-semibold mb-4 text-center md:text-left flex items-center justify-center text-blue-300">
+                    {u.naziv}
+                  </h2>
+
+                  {u.slika && (
+                    <img
+                      src={u.slika}
+                      alt={u.naziv}
+                      className="w-full rounded-xl shadow-lg"
+                    />
+                  )}
+                </div>
+
+                {/* Opis usluge */}
+                <div className="md:w-1/2">
+                  <p className="text-gray-300 leading-relaxed">{u.opis}</p>
+                </div>
+              </section>
+              {i !== kategorija.usluge.length - 1 && (
+                <div className="w-full h-px bg-white/10 my-16" />
               )}
-
-              <div className="md:w-1/2">
-                <h2 className="text-3xl font-semibold mb-4">{u.naziv}</h2>
-                <p className="text-gray-300 leading-relaxed mb-4">{u.opis}</p>
-
-                {u.cijena && (
-                  <p className="text-lg font-semibold text-blue-400">
-                    Cijena: {u.cijena.toString()} €
-                  </p>
-                )}
-              </div>
-            </section>
+            </div>
           ))}
         </div>
       </div>
