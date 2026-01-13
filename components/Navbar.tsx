@@ -231,7 +231,7 @@ export default function Navbar() {
                     {kategorije.map((k) => (
                       <li
                         key={k.slug}
-                        className="py-3 flex items-center leading-none"
+                        className="py-3 flex items-center leading-none uppercase"
                       >
                         <Link
                           href={`/usluge/${k.slug}`}
