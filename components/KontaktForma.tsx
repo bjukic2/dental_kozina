@@ -115,7 +115,7 @@ export default function KontaktForma() {
       {/* Ortopan ispod poruke */}
       <div className="flex flex-col max-w-xl w-full mx-auto">
         <label className="text-sm font-medium text-gray-300 mb-1">
-          Ortopan (po želji)
+          Ortopan (neobavezno)
         </label>
 
         <div
