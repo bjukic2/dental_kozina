@@ -12,7 +12,14 @@ export default function Navbar() {
   const [desktopUslugeOpen, setDesktopUslugeOpen] = useState(false);
   const [mobileUslugeScreen, setMobileUslugeScreen] = useState(false);
 
-  const toggleMenu = () => setMenuOpen((prev) => !prev);
+  const toggleMenu = () => {
+    setMenuOpen(true);
+    setMobileUslugeScreen(false);
+  };
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
 
   const kategorije = [
     { name: "Estetska stomatologija", slug: "estetska-stomatologija" },
@@ -38,14 +45,12 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="flex items-center justify-between h-20">
-            {/* LOGO */}
             <Link href="/" className="flex items-center">
               <Image src={logo} alt="logo" width={140} height={40} />
             </Link>
 
             {/* MOBILE BUTTON */}
             <div className="lg:hidden flex items-center gap-3">
-              {/* IZBORNIK uvijek prikazan */}
               <span
                 className="text-white text-sm cursor-pointer"
                 onClick={toggleMenu}
@@ -53,12 +58,7 @@ export default function Navbar() {
                 IZBORNIK
               </span>
 
-              {/* Ikona */}
-              <button
-                onClick={toggleMenu}
-                aria-label="Toggle Menu"
-                className="cursor-pointer"
-              >
+              <button onClick={toggleMenu} className="cursor-pointer">
                 {menuOpen ? <X size={28} /> : <Menu size={28} />}
               </button>
             </div>
@@ -81,7 +81,6 @@ export default function Navbar() {
                 </Link>
               </li>
 
-              {/* DESKTOP DROPDOWN */}
               <li
                 className="relative"
                 onMouseEnter={() => setDesktopUslugeOpen(true)}
@@ -121,7 +120,6 @@ export default function Navbar() {
               </li>
             </ul>
 
-            {/* DESKTOP CTA */}
             <div className="hidden lg:block">
               <Link href="/kontakt">
                 <button className="border border-white px-4 py-2 rounded-full hover:bg-blue-300 hover:text-gray-800 transition cursor-pointer">
@@ -133,123 +131,124 @@ export default function Navbar() {
         </div>
       </motion.nav>
 
-      {/* MOBILE MENU OVERLAY */}
+      {/* OVERLAY */}
       <AnimatePresence>
         {menuOpen && (
-          <>
-            <motion.div
-              className="fixed inset-0 bg-gray-950 z-40"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.8 }}
-              exit={{ opacity: 0 }}
-              onClick={toggleMenu}
-            />
+          <motion.div
+            key="overlay"
+            className="fixed inset-0 bg-gray-950/80 z-40"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            onClick={closeMenu}
+          />
+        )}
+      </AnimatePresence>
 
-            {/* MAIN MOBILE MENU */}
-            <motion.div
-              className="fixed top-0 right-0 h-full w-3/4 max-w-xs bg-gray-900 text-white z-50 px-6 py-8 shadow-lg"
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="flex justify-end items-center mb-6">
+      {/* MOBILE PANELS */}
+      <AnimatePresence mode="wait" initial={false}>
+        {/* MAIN SCREEN */}
+        {menuOpen && !mobileUslugeScreen && (
+          <motion.div
+            key="main-menu"
+            className="fixed top-0 right-0 h-full w-3/4 max-w-xs bg-gray-900 text-white z-50 px-6 py-8 shadow-lg"
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            onAnimationComplete={(def) => {
+              if (def === "exit") setMobileUslugeScreen(false);
+            }}
+          >
+            <div className="flex justify-end items-center mb-6">
+              <button
+                onClick={closeMenu}
+                className="cursor-pointer flex items-center text-sm gap-1"
+              >
+                ZATVORI
+                <X size={24} />
+              </button>
+            </div>
+
+            <ul className="flex flex-col gap-4 text-sm font-medium divide-y divide-gray-700">
+              <li className="py-3">
+                <Link href="/" onClick={closeMenu}>
+                  POČETNA
+                </Link>
+              </li>
+              <li className="py-3">
+                <Link href="/oNama" onClick={closeMenu}>
+                  O NAMA
+                </Link>
+              </li>
+              <li className="py-3">
+                <Link href="/galerija" onClick={closeMenu}>
+                  GALERIJA OSMIJEHA
+                </Link>
+              </li>
+
+              <li className="py-3">
                 <button
-                  onClick={toggleMenu}
-                  className="cursor-pointer flex items-center text-sm"
+                  onClick={() => setMobileUslugeScreen(true)}
+                  className="flex items-center gap-1 w-full cursor-pointer"
                 >
-                  ZATVORI
-                  <X size={24} />
+                  USLUGE <ChevronRight size={18} />
                 </button>
-              </div>
+              </li>
 
-              <ul className="flex flex-col gap-4 text-sm font-medium divide-y divide-gray-700">
-                <li className="py-3 flex items-center leading-none">
-                  <Link href="/" onClick={toggleMenu}>
-                    POČETNA
-                  </Link>
-                </li>
-                <li className="py-3 flex items-center leading-none">
-                  <Link href="/oNama" onClick={toggleMenu}>
-                    O NAMA
-                  </Link>
-                </li>
-                <li className="py-3 flex items-center leading-none">
-                  <Link href="/galerija" onClick={toggleMenu}>
-                    GALERIJA OSMIJEHA
-                  </Link>
-                </li>
+              <li className="pt-2">
+                <Link href="/kontakt" onClick={closeMenu}>
+                  KONTAKT
+                </Link>
+              </li>
+            </ul>
 
-                {/* MOBILE SUB-SCREEN TRIGGER */}
-                <li className="py-3 flex items-center leading-none">
-                  <button
-                    onClick={() => setMobileUslugeScreen(true)}
-                    className="flex items-center gap-1 w-full cursor-pointer"
+            <Link href="/kontakt">
+              <button
+                className="mt-6 border border-white px-4 py-2 rounded-full hover:bg-blue-300 hover:text-gray-800 transition w-full cursor-pointer"
+                onClick={closeMenu}
+              >
+                PRVI PREGLED
+              </button>
+            </Link>
+          </motion.div>
+        )}
+
+        {/* SUB SCREEN */}
+        {menuOpen && mobileUslugeScreen && (
+          <motion.div
+            key="sub-menu"
+            className="fixed top-0 right-0 h-full w-3/4 max-w-xs bg-gray-900 text-white z-50 px-6 py-8 shadow-lg"
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <button
+                onClick={() => setMobileUslugeScreen(false)}
+                className="cursor-pointer"
+              >
+                <ArrowLeft size={22} />
+              </button>
+              <h3 className="text-lg font-semibold">Usluge</h3>
+            </div>
+
+            <ul className="flex flex-col gap-4 text-sm font-medium divide-y divide-gray-700">
+              {kategorije.map((k) => (
+                <li key={k.slug} className="py-3 uppercase">
+                  <Link
+                    href={`/usluge/${k.slug}`}
+                    onClick={closeMenu}
+                    className="block py-1"
                   >
-                    <span>USLUGE</span>
-                    <ChevronRight size={18} />
-                  </button>
-                </li>
-
-                <li className="pt-2">
-                  <Link href="/kontakt" onClick={toggleMenu}>
-                    KONTAKT
+                    {k.name}
                   </Link>
                 </li>
-              </ul>
-              <Link href="/kontakt">
-                <button
-                  className="mt-6 border border-white px-4 py-2 rounded-full hover:bg-blue-300 hover:text-gray-800 transition w-full cursor-pointer"
-                  onClick={toggleMenu}
-                >
-                  PRVI PREGLED
-                </button>
-              </Link>
-            </motion.div>
-
-            {/* MOBILE SUB-SCREEN FOR KATEGORIJE */}
-            <AnimatePresence>
-              {mobileUslugeScreen && (
-                <motion.div
-                  className="fixed top-0 right-0 h-full w-3/4 max-w-xs bg-gray-900 text-white z-60 px-6 py-8 shadow-lg"
-                  initial={{ x: "100%" }}
-                  animate={{ x: 0 }}
-                  exit={{ x: "100%" }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="flex items-center gap-3 mb-6">
-                    <button
-                      onClick={() => setMobileUslugeScreen(false)}
-                      className="cursor-pointer"
-                    >
-                      <ArrowLeft size={22} />
-                    </button>
-                    <h3 className="text-lg font-semibold">Usluge</h3>
-                  </div>
-
-                  <ul className="flex flex-col gap-4 text-sm font-medium divide-y divide-gray-700">
-                    {kategorije.map((k) => (
-                      <li
-                        key={k.slug}
-                        className="py-3 flex items-center leading-none uppercase"
-                      >
-                        <Link
-                          href={`/usluge/${k.slug}`}
-                          onClick={() => {
-                            setMobileUslugeScreen(false);
-                            toggleMenu();
-                          }}
-                          className="block py-1"
-                        >
-                          {k.name}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </>
+              ))}
+            </ul>
+          </motion.div>
         )}
       </AnimatePresence>
     </>
