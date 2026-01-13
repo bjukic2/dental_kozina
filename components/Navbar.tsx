@@ -19,6 +19,12 @@ export default function Navbar() {
     { name: "Ortodoncija", slug: "ortodoncija" },
     { name: "Implantologija", slug: "implantologija" },
     { name: "Parodontologija", slug: "parodontologija" },
+    {
+      name: "Restaurativna dentalna medicina",
+      slug: "restaurativna-dentalna-medicina",
+    },
+    { name: "Endodoncija", slug: "endodoncija" },
+    { name: "Protetika", slug: "protetika" },
   ];
 
   return (
