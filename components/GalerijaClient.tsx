@@ -24,10 +24,6 @@ export default function GalerijaClient({ usporedbe }: GalerijaClientProps) {
       {usporedbe.map((item, i) => (
         <div key={item.id}>
           <div className="space-y-4 text-center">
-            <h2 className="text-xl font-semibold text-gray-200">
-              {item.naziv}
-            </h2>
-
             <div className="aspect-video w-full max-w-3xl mx-auto overflow-hidden rounded-xl shadow">
               <ReactCompareSlider
                 ref={reactCompareSliderRef}
@@ -46,13 +42,14 @@ export default function GalerijaClient({ usporedbe }: GalerijaClientProps) {
                 onlyHandleDraggable
               />
             </div>
-
-            {item.opis && <p className="text-gray-300">{item.opis}</p>}
+            <h2 className="text-xl font-semibold text-gray-200">
+              {item.naziv}
+            </h2>
           </div>
 
           {/* Divider između usporedbi */}
           {i !== usporedbe.length - 1 && (
-            <div className="w-full h-px bg-gray-800 my-16" />
+            <div className="w-full h-px bg-gray-800 my-8" />
           )}
         </div>
       ))}
