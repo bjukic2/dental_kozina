@@ -56,22 +56,11 @@ export default function ONamaPage() {
         </div>
       </section>
 
-      {/* OSOBA 2 – OBRNUTO */}
+      {/* OSOBA 2 */}
       <section className="py-24 px-6 md:px-12 bg-gray-950">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          {/* TEKST */}
-          <div>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Ime Prezime</h2>
-            <p className="text-blue-300 font-medium mb-3">Dentalni tehničar</p>
-            <p className="text-gray-300 leading-relaxed">
-              Dentalni tehničar specijaliziran za izradu estetskih i
-              funkcionalnih protetskih rješenja koristeći suvremenu tehnologiju
-              i visokokvalitetne materijale.
-            </p>
-          </div>
-
-          {/* SLIKA */}
-          <div className="w-full h-64 sm:h-80 md:h-full relative">
+          {/* SLIKA — prva na mobitelu, druga na desktopu */}
+          <div className="order-1 md:order-2 w-full h-64 sm:h-80 md:h-full relative">
             <Image
               src="/images/placeholder-person.jpg"
               alt="Dentalni tehničar"
@@ -79,6 +68,17 @@ export default function ONamaPage() {
               className="rounded-2xl shadow-lg object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
+          </div>
+
+          {/* TEKST — drugi na mobitelu, prvi na desktopu */}
+          <div className="order-2 md:order-1">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Ime Prezime</h2>
+            <p className="text-blue-300 font-medium mb-3">Dentalni tehničar</p>
+            <p className="text-gray-300 leading-relaxed">
+              Dentalni tehničar specijaliziran za izradu estetskih i
+              funkcionalnih protetskih rješenja koristeći suvremenu tehnologiju
+              i visokokvalitetne materijale.
+            </p>
           </div>
         </div>
       </section>
