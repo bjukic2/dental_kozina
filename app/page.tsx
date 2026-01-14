@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
+import GalleryCarousel from "@/components/PhotoCarousel";
 
 export default function HomePage() {
   return (
@@ -111,30 +112,17 @@ export default function HomePage() {
       </section>
 
       {/* GALLERY / NAŠA OPREMA */}
-      <section className="py-24 px-6 md:px-12  bg-gray-900 text-white text-center">
+      <section className="py-24 px-6 md:px-12 bg-gray-900 text-white text-center">
         <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-blue-300">
           Naša ordinacija i oprema
         </h2>
+
         <p className="text-gray-300 mb-12 max-w-2xl mx-auto">
           Pokažimo vam modernu opremu i ugodno okruženje u kojem se brinemo za
           vaš osmijeh.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {[1, 2, 3, 4, 5, 6].map((i) => (
-            <div
-              key={i}
-              className="relative w-full h-48 sm:h-56 md:h-64 rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition-transform"
-            >
-              <Image
-                src={`/images/gallery-${i}.jpg`}
-                alt={`Slika ${i}`}
-                fill
-                className="object-cover"
-              />
-            </div>
-          ))}
-        </div>
+        <GalleryCarousel />
       </section>
 
       {/* CTA */}
