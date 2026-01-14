@@ -45,7 +45,7 @@ export default function ScrollToTopButton() {
               onClick={scrollToTop}
               aria-label="Scroll to top"
               className="p-3 md:p-4 rounded-full shadow-lg bg-gray-800 text-white hover:bg-gray-700 
-                         dark:bg-blue-300 dark:text-gray-900 dark:hover:bg-gray-200 
+                         dark:bg-gray-800/70 dark:text-gray-200 dark:hover:bg-gray-700
                          transition-colors duration-300 cursor-pointer"
             >
               <ArrowUp size={20} />
@@ -54,7 +54,7 @@ export default function ScrollToTopButton() {
             {/* TOOLTIP */}
             <span
               className="absolute right-full mr-2 top-1/2 -translate-y-1/2 scale-0 group-hover:scale-100 
-                             origin-right bg-gray-800 text-white dark:bg-blue-300 dark:text-gray-900 
+                             origin-right bg-gray-800 text-white dark:bg-gray-800/70 dark:text-gray-200 
                              text-xs px-2 py-1 rounded transition-all duration-300 whitespace-nowrap"
             >
               Nazad na vrh

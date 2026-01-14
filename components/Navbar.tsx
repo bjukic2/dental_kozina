@@ -164,7 +164,7 @@ export default function Navbar() {
             <div className="flex justify-end items-center mb-6">
               <button
                 onClick={closeMenu}
-                className="cursor-pointer flex items-center text-sm gap-1"
+                className="cursor-pointer flex items-center text-sm gap-1 font-semibold"
               >
                 ZATVORI
                 <X size={24} />
@@ -232,7 +232,7 @@ export default function Navbar() {
               >
                 <ArrowLeft size={22} />
               </button>
-              <h3 className="text-lg font-semibold">Usluge</h3>
+              <h3 className="font-semibold">USLUGE</h3>
             </div>
 
             <ul className="flex flex-col gap-4 text-sm font-medium divide-y divide-gray-700">
