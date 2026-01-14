@@ -197,7 +197,7 @@ export default function Navbar() {
                 </button>
               </li>
 
-              <li className="pt-2">
+              <li className="py-3">
                 <Link href="/kontakt" onClick={closeMenu}>
                   KONTAKT
                 </Link>
